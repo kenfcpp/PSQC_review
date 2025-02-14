@@ -1,0 +1,13 @@
+*.html
+!_cover.html
+*.txt
+*.xml
+*.tex
+
+FirstStepReVIEW-*/
+webroot/
+
+*.pdf
+*.epub
+
+prh.yml
