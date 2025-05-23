@@ -1,0 +1,12 @@
+PREDEF:
+  - preface.re
+
+CHAPS:
+  - qubits-gates-circuits.re
+
+
+APPENDIX:
+  - tips.re
+
+POSTDEF:
+  - contributors.re
