@@ -2,7 +2,7 @@ PREDEF:
   - preface.re
 
 CHAPS:
-  - writing-book.re
+  - qubits-gates-circuits.re
   - planning-book.re
   - workflow.re
   - publishing-book.re
@@ -11,6 +11,7 @@ CHAPS:
   - review-introduction.re
   - configure.re
   - textlint.re
+  - writing-book.re
 
 APPENDIX:
   - tips.re

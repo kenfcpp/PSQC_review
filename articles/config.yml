@@ -17,14 +17,14 @@ review_version: 5.0
 # inherit: ["A.yml", "B.yml"]
 
 # ブック名(ファイル名になるもの。ASCII範囲の文字を使用)
-bookname: MyFirstBook
+bookname: PSQC
 # 記述言語。省略した場合はja
 language: ja
 
 # 書名
-booktitle: {name: "技術書をかこう！", file-as: "ギジュツショヲカコウ"}
+booktitle: {name: "Principles of Superconducting Quantum Computers", file-as: "PSQC"}
 # サブタイトルはオプション。コメントアウトで省略します。
-subtitle: {name: "～はじめてのRe:VIEW～", file-as: "ハジメテノレビュー"}
+subtitle: {name: "～超伝導量子コンピュータの原理～", file-as: "PSQC"}
 
 # 著者名。「, 」で区切って複数指定できる
 aut: [{name: "冨田　賢", file-as: "TomiKen"}]
@@ -49,7 +49,7 @@ aut: [{name: "冨田　賢", file-as: "TomiKen"}]
 # a-csl, csl: 監修者
 # a-dsr, dsr: デザイナ
 # a-edt, edt: 編集者
-edt: ["mhidaka"]
+edt: ["TomiKen"]
 # a-ill, ill: イラストレータ
 # a-lyr, lyr: 歌詞作成者
 # a-mdc, mdc: メタデータセットの一次的責任者
@@ -58,7 +58,7 @@ edt: ["mhidaka"]
 # a-oth, oth: その他
 # a-pht, pht: 撮影責任者
 # a-pbl, pbl: 出版社（発行所）
-pbl: TechBooster
+pbl: ["理研"]
 # a-prt, prt: 印刷所
 # prt: TechBooster
 # a-red, red: 項目の枠組起草者
@@ -71,7 +71,7 @@ pbl: TechBooster
 # contact: 連絡先
 
 # 刊行日(省略した場合は実行時の日付)
-date: 2023-11-12
+date: 2025-03-03
 # 発行年月。YYYY-MM-DD形式による配列指定。省略した場合はdateを使用する
 # 複数指定する場合は次のように記述する
 # [["初版第1刷の日付", "初版第2刷の日付"], ["第2版第1刷の日付"]]
@@ -186,7 +186,7 @@ colophon: true
 # reファイルを格納するディレクトリ。省略した場合は以下 (. はカレントディレクトリを示す)
 # contentdir: .
 # pandoc2reviewを利用してMarkdownコンテンツを取り込むには、以下を有効にする
-# contentdir: _refiles
+contentdir: _refiles
 
 # @<w>命令で使用する単語ファイルのパス。["common.csv", "mybook.csv"]のように配列指定も可
 # words_file: words.csv
