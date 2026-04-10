@@ -104,4 +104,39 @@ In quantum mechanics, vectors result from taking the expectation value1 of vecto
  As mentioned above, it is sometimes helpful to refer to electron spin as an example, 
  but our discussion applies to any two-state quantum mechanical system.
 
-For this discussion, consider the general vector operator 𝐀:
+For this discussion, consider the general vector operator @<m>{A} :
+//texequation{
+A = \hat{x} A_x + \hat{y} A_y + \hat{z} A_z
+//} \tag{2.5}
+where @<m>{\hat{x\}}, @<m>{\hat{y\}} and @<m>{\hat{z\}} refer to unit vectors in the @<m>{x, y} and @<m>{z} direction, 
+ respectively. 
+ @<m>{A_x} refers to the matrix component of @<m>{A} that operates along the @<m>{x} axis.
+ For the quantum state @<m>{|\psi\rangle}, the expectation of @<m>{A} is 
+ given by @<m>{\langle \psi' | A | \psi' \rangle}|𝜓⟩. 
+ Now suppose we would like to rotate the system so that @<m>{\langle \psi' | A | \psi' \rangle}| rotates 
+ by an angle 𝜃 in the CCW direction around the @<m>{z} axis.Wewant to find a unitary operator
+ @<m>{U} such that @<m>{|\psi'\rangle = U |\psi\rangle}, and
+//texequation{
+\langle \psi' | A | \psi' \rangle = R_z^c(\theta) \langle \psi | A | \psi \rangle \tag{2.6}
+//} 
+Substituting in for  @<m>{|\psi'\rangle} leads to the following constraint on @<m>{U}
+//texequation{
+\langle \psi | U^\dagger A U | \psi \rangle
+=
+\langle \psi | R_z^c(\theta) A | \psi \rangle
+\tag{2.7}
+//}
+//texequation{
+U^\dagger A U = R_z^c(\theta) A \tag{2.8}
+//}
+Here we have used the fact that @<m>{R_z^c(\theta)\langle \psi|A|\psi\rangle = \langle \psi|R_z^c(\theta)A|\psi\rangle}, 
+ which is easily verified by direct calculation.We have also used the fact that @<m>{(U|\psi\rangle)^\dagger = \langle \psi|U^\dagger}.
+ 
+To simplify our consideration of (2.8), 
+ let us consider an infinitesimal rotation 𝜖 about the axis 𝐧̂ 
+ (a unit vector along the desired axis of rotation). 
+ In this case we anticipate that @<m>{U} will depart only slightly from the identity operator, 
+ so to first order in small quantities we can express @<m>{U} with the first two terms in a Maclaurin series:
+//texequation{
+U = I - i \frac{\epsilon}{2} \, \hat{n} \cdot \sigma \tag{2.9}
+//}
