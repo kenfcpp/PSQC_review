@@ -56,7 +56,7 @@
 \newlength{\captionwidth}
 \setlength{\captionwidth}{\textwidth}
 \addtolength{\captionwidth}{-\captionnumwidth}
-\def\captionhead{\sffamily{\color{black!30!white}{▲}}}
+\def\captionhead{}
 \long\def\@makecaption#1#2{%
   \addvspace\abovecaptionskip
   \buildcaption{!}{#1}{#2}
@@ -67,7 +67,8 @@
   \ifdim \wd\@tempboxa <\captionwidth%
     \def\capline{\captionsize\captionhead #2%
                   \hskip1zw\relax\usebox{\@tempboxa}\mbox{}\relax}
-    \ifx#1!\relax\centerline{\capline}\else\noindent\capline\fi
+    %% \ifx#1!\relax\centerline{\capline}\else\noindent\capline\fi
+    \noindent\capline
   \else
     \noindent%
     \parbox[t]{\captionnumwidth}{%
@@ -80,7 +81,7 @@
 \long\def\listcaption#1:#2\relax{\buildcaption{}{#1}{#2}}
 
 \renewcommand{\reviewimagecaption}[1]{%
-  {\def\captionhead{\sffamily{\color{black!30!white}{▲}}}
+  {\def\captionhead{}
    \caption{#1}}}
 
 \renewcommand{\reviewtablecaption}[1]{%

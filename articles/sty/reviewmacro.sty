@@ -15,6 +15,13 @@
 % ユーザー固有の定義
 \RequirePackage{review-custom}
 
+\setlength{\textwidth}{45zw}
+% \setlength{\oddsidemargin}{0mm}
+% \setlength{\evensidemargin}{0mm}
+
+% 右寄せブロック環境
+\newenvironment{rightblock}{\begin{flushright}}{\end{flushright}}
+
 %% run \@endofreviewmacrohook at the end of reviewmacro style
 \@ifundefined{@endofreviewmacrohook}{}{%
 \let\AtEndOfReVIEWMacro\@firstofone

@@ -1,20 +1,13 @@
 PREDEF:
   - preface.re
 
+
 CHAPS:
   - qubits-gates-circuits.re
-  - planning-book.re
-  - workflow.re
-  - publishing-book.re
-  - distribution.re
-  - setup.re
-  - review-introduction.re
-  - configure.re
-  - textlint.re
-  - writing-book.re
+  - physics_of_single_qubit_gates.re
 
 APPENDIX:
-  - tips.re
+  
 
 POSTDEF:
-  - contributors.re
+  

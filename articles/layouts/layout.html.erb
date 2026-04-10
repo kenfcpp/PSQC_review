@@ -1,0 +1,17 @@
+<script>
+window.MathJax = {
+  chtml: {
+    displayAlign: "left",
+    displayIndent: "0em"
+  }
+};
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.MathJax) {
+    MathJax.startup.getComponents();
+    MathJax.typesetPromise();
+  }
+});
+</script>

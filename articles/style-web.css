@@ -36,6 +36,10 @@ nav.side-content {
     color: #eee; }
   .book-body .book-cursor:hover {
     color: #333; }
+  .math {
+    text-align: left;
+    margin-left: 1em;}
+
 
 footer p {
   margin-left: 240px;
@@ -43,3 +47,27 @@ footer p {
 
 .cover-image img {
   max-width: 100%; }
+
+.math {
+  text-align: left;
+  margin-left: 1em;
+}
+
+/* ★これを追加 */
+.equation {
+  text-align: left !important;
+}
+
+.equation p {
+  text-align: left !important;
+}
+
+mjx-container[display="true"] {
+  display: block !important;
+  text-align: left !important;
+  margin-left: 0 !important;
+}
+
+mjx-container[width="full"] mjx-itable {
+  justify-content: flex-start !important;
+}

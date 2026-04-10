@@ -1,1 +1,116 @@
 % for user-defined macro
+% ===== Quantum notation =====
+% ===== Math settings =====
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+
+% ===== 数式左寄せ =====
+\makeatletter
+\@fleqntrue
+\@ifundefined{mathindent}{}{\setlength{\mathindent}{0pt}}
+\makeatother
+
+% ===== 図左寄せ =====
+\makeatletter
+\renewenvironment{reviewimage}{%
+  \begin{figure}[H]
+  \raggedright
+}{%
+  \end{figure}
+}
+\makeatother
+
+% ===== English paragraph tuning =====
+\AtBeginDocument{
+\emergencystretch=2em
+}
+
+% ===== 紙面レイアウト =====
+\usepackage[
+  inner=22mm,
+  outer=3mm,
+  top=30mm,
+  bottom=25mm
+]{geometry}
+% ===== ページ番号位置 =====
+\setlength{\footskip}{20pt}
+
+% ===== フォント =====
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+% \usepackage{inconsolata}
+\linespread{1.05}
+
+% 欧文＋数式フォント
+% \usepackage{newtxtext,newtxmath}
+\usepackage{mathpazo}
+
+
+
+% 日本語フォント改善
+% \usepackage[deluxe]{otf}
+
+% ===== 数式間隔 =====
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
+\setlength{\abovedisplayshortskip}{0pt}
+\setlength{\belowdisplayshortskip}{0pt}
+\setlength{\jot}{2pt}
+\setlength{\parskip}{0pt}
+
+\AtBeginDocument{
+  \setlength{\abovedisplayskip}{6pt}
+  \setlength{\belowdisplayskip}{6pt}
+  \setlength{\parskip}{0pt}
+}
+
+
+\setlength{\abovedisplayskip}{0.1\baselineskip}
+\setlength{\abovedisplayshortskip}{0.1\baselineskip}
+
+
+\makeatletter
+%\renewenvironment{reviewequationblock}
+%{%
+%  \par
+%  \vspace{-0.6\baselineskip}
+%  \noindent
+%}
+%{%
+%  \par
+%  \vspace{0.2\baselineskip}
+%}
+\makeatother
+
+
+\makeatletter
+\renewenvironment{reviewequationblock}{}{}
+\makeatother
+
+\makeatletter
+\renewcommand{\medskip}{\vspace{0pt}}
+\renewcommand{\smallskip}{\vspace{0pt}}
+\renewcommand{\bigskip}{\vspace{0pt}}
+\makeatother
+
+\makeatletter
+%\def\vspace#1{}
+\makeatother
+
+% ===== 図番装飾削除 =====
+\makeatletter
+\renewcommand{\review@intn@image}{Figure}
+\makeatother
+
+% ===== Quantum notation =====
+% Dirac notation
+\newcommand{\ket}[1]{\left|#1\right\rangle}
+\newcommand{\bra}[1]{\left\langle#1\right|}
+\newcommand{\braket}[2]{\left\langle#1|#2\right\rangle}
+
+\newcommand{\expect}[1]{\left\langle#1\right\rangle}
+\newcommand{\op}[1]{\hat{#1}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\identity}{\mathbb{I}}

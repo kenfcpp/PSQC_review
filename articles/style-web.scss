@@ -72,6 +72,12 @@ nav.side-content
         color: #333;
     }
 
+    .math 
+    {
+        text-align: left;
+        margin-left: 1em;
+    }
+
 }
 
 footer p
@@ -85,3 +91,7 @@ footer p
     max-width: 100%;
 }
 
+mjx-container[jax="CHTML"][display="true"] {
+  text-align: left !important;
+  margin-left: 1em !important;
+}

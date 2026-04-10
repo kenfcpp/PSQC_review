@@ -19,15 +19,15 @@ review_version: 5.0
 # ブック名(ファイル名になるもの。ASCII範囲の文字を使用)
 bookname: PSQC
 # 記述言語。省略した場合はja
-language: ja
+language: en
 
 # 書名
 booktitle: {name: "Principles of Superconducting Quantum Computers", file-as: "PSQC"}
 # サブタイトルはオプション。コメントアウトで省略します。
-subtitle: {name: "～超伝導量子コンピュータの原理～", file-as: "PSQC"}
+#subtitle: {name: "～超伝導量子コンピュータの原理～", file-as: "PSQC"}
 
 # 著者名。「, 」で区切って複数指定できる
-aut: [{name: "冨田　賢", file-as: "TomiKen"}]
+aut: [{name: "Daniel D. Stancil", file-as: "DanielD"}, {name: "Gregory T. Byrd", file-as: "GregoryT"}]
 
 # 以下はオプション
 # 以下はオプション(autと同じように配列書式で複数指定可能)。
@@ -58,7 +58,7 @@ edt: ["TomiKen"]
 # a-oth, oth: その他
 # a-pht, pht: 撮影責任者
 # a-pbl, pbl: 出版社（発行所）
-pbl: ["理研"]
+pbl: ["WILEY"]
 # a-prt, prt: 印刷所
 # prt: TechBooster
 # a-red, red: 項目の枠組起草者
@@ -89,7 +89,8 @@ rights: (C) 2017-2023 TechBooster
 # coverage: 内容の範囲や領域(配列で複数指定可)
 
 # デバッグフラグ。nullでないときには一時ファイルをカレントディレクトリに作成し、削除もしない
-debug: null
+#debug: null
+debug: true
 
 # 固有IDに使用するドメイン。省略した場合は時刻に基づくランダムUUIDが入る
 urnid: urn:uid:https://github.com/TechBooster/FirstStepReVIEW-v3
@@ -118,7 +119,7 @@ toclevel: 2
 # 採番の設定。採番させたくない見出しには「==[nonum]」のようにnonum指定をする
 #
 # 本文でセクション番号を表示する見出しレベル
-secnolevel: 2
+secnolevel: 3
 
 # 本文中に目次ページを作成するか。省略した場合はnull (作成しない)
 toc: true
@@ -132,7 +133,8 @@ toc: true
 #
 # 表紙に配置し、書籍の影絵にも利用する画像ファイル。省略した場合はnull (画像を使わない)。画像ディレクトリ内に置いてもディレクトリ名は不要(例: cover.jpg)
 # PDFMaker 固有の表紙設定は pdfmaker セクション内で上書き可能
-coverimage: cover.jpg
+#coverimage: cover.jpg
+coverimage: cover.png
 #
 # 表紙の後に大扉ページを作成するか。省略した場合はtrue (作成する)
 titlepage: true
@@ -200,11 +202,17 @@ contentdir: _refiles
 
 # 図・表・コードリスト・数式のキャプション位置。
 # 値はtop（上）またはbottom（下）でデフォルトは以下のとおり
-# caption_position:
-#   image: bottom
-#   table: top
-#   list: top
-#   equation: top
+caption_position:
+  image: bottom
+  table: top
+  list: top
+  equation: top
+  figure: bottom
+
+caption_prefix:
+  image: "Figure "
+  table: "Table "
+  equation: ""
 
 # review-toc向けのヒント情報
 # (文字幅を考慮した行数計測には、別途unicode-eaw gemファイルが必要)
@@ -221,6 +229,8 @@ contentdir: _refiles
 #   imgmath: 画像化。オプションはimgmath_optionsで設定する
 #   mathjax: MathJax変換。EPUBMaker/WebMakerのみ効果。なお、MathJaxに必要なデータはインターネットから取得される。EPUBで利用できるかはEPUBリーダ依存
 # math_format: null
+# math_format: latex
+math_format: mathjax
 
 # math_formatがimgmathの場合の設定
 # 以下のパラメータを有効にするときには、
@@ -374,7 +384,29 @@ texstyle: ["reviewmacro"]
 # hiddenfolio=nikko-pcは日光企画向けのノドへの隠しノンブル配置
 #
 # B5の設定(10pt 40文字×35行) - 紙版
-texdocumentclass: ["review-jsbook", "media=print,paper=b5,serial_pagination=true,hiddenfolio=nikko-pc,openany,fontsize=10pt,baselineskip=15.4pt,line_length=40zw,number_of_lines=35,head_space=30mm,headsep=10mm,headheight=5mm,footskip=10mm"]
+# texdocumentclass: ["review-jsbook", "media=print,paper=b5,serial_pagination=true,hiddenfolio=nikko-pc,openany,fontsize=10pt,baselineskip=15.4pt,line_length=40zw,number_of_lines=35,head_space=30mm,headsep=10mm,headheight=5mm,footskip=10mm",fleqn]
+# texdocumentclass: ["review-jsbook", "media=print,paper=b5,serial_pagination=false,twoside,fontsize=10pt,baselineskip=16pt,line_length=50zw,number_of_lines=35,head_space=30mm,headsep=10mm,headheight=5mm,footskip=16mm"]
+texdocumentclass: [
+  "review-jsbook",
+  "media=print,paper=b5,fontsize=11pt,baselineskip=16pt"
+]
+
+# texdocumentclass: ["review-jsbook"]
+
+# texdocumentclassoption:
+#  - media=print
+#  - paper=b5
+#  - serial_pagination=true
+#  - openany
+#  - fontsize=10pt
+#  - baselineskip=16pt
+#  - line_length=52zw
+#  - number_of_lines=32
+#  - head_space=30mm
+#  - headsep=10mm
+#  - headheight=5mm
+#  - footskip=16mm
+
 # B5の設定(10pt 40文字×35行) - 電子版
 # texdocumentclass: ["review-jsbook", "media=ebook,paper=b5,serial_pagination=true,openany,fontsize=10pt,baselineskip=15.4pt,line_length=40zw,number_of_lines=35,head_space=30mm,headsep=10mm,headheight=5mm,footskip=10mm"]
 # A5の設定(9pt 38文字×37行) - 紙版
@@ -482,6 +514,7 @@ pdfmaker:
 #
 webmaker:
     stylesheet: ["style-web.css", "style-web.scss"]
+    template: ["layouts/layout.html.erb"]
 
 # TechBooster Re:VIEW-Template独自設定
 techbooster:
