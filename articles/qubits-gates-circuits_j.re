@@ -1,8 +1,7 @@
 = 量子ビット、ゲート、回路
 
 == ビットと量子ビット
-
-最もよく知られているデジタル システムは、2 進数、つまり「ビット」に基づいています。
+　最もよく知られているデジタル システムは、2 進数、つまり「ビット」に基づいています。
 各ビットは「1」または「0」のいずれかの値を取ることができ、任意のデータをこのようなバイナリ表現で表すことができます。
 さらに、任意の論理演算をビットを使用して実装できます。
 これらのよく知られたシステムは、古典物理学の日常的な法則に支配されているため、「古典的」システムと呼ぶことにします。
@@ -12,8 +11,7 @@
 量子ビットの機能と動作はビットとはまったく異なります。量子コンピューティングの研究の出発点として、まずは主な違いを指摘し、議論することから始めます。
 
 === 空間回路と時間回路
-
-単純な古典的論理回路は、図 1.1(a) に示す NOT ゲートで表されます。
+　単純な古典的論理回路は、図 1.1(a) に示す NOT ゲートで表されます。
 NOT ゲートは「0」を「1」に変換し、その逆も行います。 
 この回路図では、水平方向は空間を表しています。
 つまり、回路の入力と出力は回路内の異なるポイントから物理的にアクセス可能であり、同時に測定できます。
@@ -27,18 +25,17 @@ NOT ゲートは「0」を「1」に変換し、その逆も行います。
 出力は実質的に入力を上書きし、ゲートが適用されるたびに量子ビットの状態が変化します。
 
 === 重ね合わせ
-古典的なビットは「0」か「1」のいずれかでなければなりません。
+　古典的なビットは「0」か「1」のいずれかでなければなりません。
 対照的に、量子ビットは一部が「0」で一部が「1」である@<i>{重ね合わせ状態}になることもできます。
 
-//image[fig_1_1][古典的 NOT ゲートと量子 NOT ゲートの解釈][scale=0.7]{
+//image[fig_1_1][古典的 NOT ゲートと量子 NOT ゲートの解釈][scale=0.8]{
 //}
-
 
 量子ビットが「1」または「0」の状態にある場合、その量子ビットは@<i>{基底状態}にあると言います。@<fn>{fn-1}
 
 //footnote[fn-1][より正確には、|0> と |1> は「計算基底」または「標準基底」状態として知られています。本章では、標準基底に限定して議論し、単に基底状態と呼ぶことにします。]
 
-基底状態の場合、古典ゲートの状態を測定するのと同じように、状態を変更せずに量子ビットの状態を何度でも測定できます。
+　基底状態の場合、古典ゲートの状態を測定するのと同じように、状態を変更せずに量子ビットの状態を何度でも測定できます。
 重ね合わせ状態も、測定すると、混合によって決まる確率で「0」または「1」のいずれかが生成されます。
 この場合、測定を行うという行為によって重ね合わせ状態が構成基底状態の 1 つに「崩壊」し、重ね合わせ状態に保存された情報は失われます。
 例えば、@<m>{|\psi\nolinebreak\rangle}が重ね合わせ状態を表している場合、いつでも量子ビットを測定すると状態が
@@ -106,7 +103,7 @@ NOT ゲートは「0」を「1」に変換し、その逆も行います。
 できるため、入力は失われません。
 
 === エンタングルメント
-重ね合わせ状態にある量子ビットの測定結果の確率（正確な結果ではない）しか計算できないという事実は、
+　重ね合わせ状態にある量子ビットの測定結果の確率（正確な結果ではない）しか計算できないという事実は、
 古典力学には類似例のない現象、すなわち@<i>{エンタングルメント}（量子もつれ）を可能にします。 
 2つの量子ビットがエンタングルメント状態にある場合、
 どちらの量子ビットの測定結果もその確率によってしか予測できないにもかかわらず、状態は相関しています。
@@ -136,44 +133,89 @@ NOT ゲートは「0」を「1」に変換し、その逆も行います。
 　@<i>{重ね合わせ}と@<i>{もつれ}の現象が量子コンピューティングに並外れて強力な機能を与えていることがわかります。
 
 == 単一量子ビット状態
-量子ビットの状態には 2 つの要素があるため、状態を状態ベクトルと呼ばれる 2 次元ベクトルとして表すことができます。
+　量子ビットの状態には 2 つの要素があるため、状態を状態ベクトルと呼ばれる 2 次元ベクトルとして表すことができます。
 基底状態は次のように書けます。
-
-//indepimage[eq_1_4]
-#@# \begin{equation}
-#@# |0\rangle = \begin{bmatrix} 1 \\ 0 \end{bmatrix}, \quad |1\rangle = \begin{bmatrix} 0 \\ 1 \end{bmatrix}.\tag{1.4}
-#@# \end{equation}
-
+#@# //indepimage[eq_1_4]
+The basis states can be written as
+//texequation{
+\ket{0} =
+\begin{bmatrix}
+1\\
+0
+\end{bmatrix},
+\quad
+\ket{1} =
+\begin{bmatrix}
+0\\
+1
+\end{bmatrix}
+\tag{1.4}
+//}
 したがって、一般的な重ね合わせ状態は、基底状態の加重和として表現できます。
-
-//indepimage[eq_1_5]
-#@# \[
-#@# |\psi\rangle = \alpha |0\rangle + \beta |1\rangle = \alpha \begin{bmatrix} 1 \\ 0 \end{bmatrix} + \beta \begin{bmatrix} 0 \\ 1 \end{bmatrix} = \begin{bmatrix} \alpha \\ \beta \end{bmatrix}\tag{1.5}
-#@# \]
-
-|𝜓⟩ という表記は「ケット」と呼ばれます。
-ケットの転置複素共役e@<fn>{fn-4}は⟨𝜓|と表記され、「ブラ」と呼ばれる。
+//texequation{
+\ket{\psi}
+=
+\alpha\ket{0}+\beta\ket{1}
+=
+\alpha
+\begin{bmatrix}
+1\\
+0
+\end{bmatrix}
++
+\beta
+\begin{bmatrix}
+0\\
+1
+\end{bmatrix}
+=
+\begin{bmatrix}
+\alpha\\
+\beta
+\end{bmatrix}
+\tag{1.5}
+//}
+@<m>{|\psi\rangle} という表記は「ケット」と呼ばれます。
+ケットの転置複素共役e@<fn>{fn-4}は⟨@<m>{\langle\psi|}と表記され、「ブラ」と呼ばれる。
 
 //footnote[fn-4][行列またはベクトルの転置は、行と列を入れ替えることで形成されます。列ベクトルの転置は行ベクトルになります。転置複素共役は、ベクトルまたは行列の転置を取り、各要素の複素共役を取ることで形成されます。]
-
-//indepimage[eq_1_6]
-#@# \begin{equation}
-#@# |\psi\rangle^\dagger = \langle \psi | = \begin{bmatrix} \alpha^* & \beta^* \end{bmatrix}\tag{1.6}
-#@# \end{equation}
+#@# //indepimage[eq_1_6]
+//texequation{
+\ket{\psi}^\dagger
+=
+\bra{\psi}
+=
+\begin{bmatrix}
+\alpha^* & \beta^*
+\end{bmatrix}
+\tag{1.6}
+//}
 
 ここで、上付き文字の†は転置複素共役、つまりエルミート共役、あるいは随伴とも呼ばれる複素共役を示します。
 「ブラ」と「ケット」という用語は、掛け合わせて「ブラケット」になるまでは奇妙に思えるかもしれません。
 例えば、
-
-//indepimage[eq_1_7]
-#@# \begin{equation}
-#@# \langle \psi | \psi \rangle = \begin{bmatrix} \alpha^* & \beta^* \end{bmatrix} \begin{bmatrix} \alpha \\ \beta \end{bmatrix} = \alpha^* \alpha + \beta^* \beta\tag{1.7}
-#@# \end{equation}
-
-//indepimage[eq_1_8]
-#@# \begin{equation}
-#@# = |\alpha|^2 + |\beta|^2\tag{1.8}
-#@# \end{equation}
+#@# //indepimage[eq_1_7]
+//texequation{
+\braket{\psi}{\psi}
+=
+\begin{bmatrix}
+\alpha^\ast & \beta^\ast
+\end{bmatrix}
+\begin{bmatrix}
+\alpha\\
+\beta
+\end{bmatrix}
+=
+\alpha^\ast \alpha + \beta^\ast \beta
+\tag{1.7}
+//}
+#@# //indepimage[eq_1_8]
+//texequation{
+\alpha^\ast \alpha + \beta^\ast \beta
+=
+|\alpha|^2 + |\beta|^2
+\tag{1.8}
+//}
 
 (bra-ket として表記する場合は、中央に縦棒が 1 本だけ使用されることに注意してください。)
 ブラケット演算子（ブラとケットの乗算）は「内積」とも呼ばれます。
@@ -181,105 +223,95 @@ NOT ゲートは「0」を「1」に変換し、その逆も行います。
 すべての起こり得る結果の確率の合計は 1 に等しくなければならないため、状態ベクトルは 1 の長さに適切に正規化される必要があることがわかります。
 
 == 測定とボルンの法則
-
-重ね合わせ状態の特定の要素を測定する確率は、その係数の二乗の大きさで決まることをすでに述べました。
+　重ね合わせ状態の特定の要素を測定する確率は、その係数の二乗の大きさで決まることをすでに述べました。
 測定行為には、情報を抽出するために量子ビットと相互作用する装置が必要です。
 量子力学の法則によれば、装置は一連の基本状態に関連した部分的な情報しか提供できない。
-ここでは、測定は常に標準基底状態 |0⟩ と |1⟩ に関して行われるものと仮定します。
+ここでは、測定は常に標準基底状態 @<m>{|1\rangle} と @<m>{|1\rangle} に関して行われるものと仮定します。
 これはほとんどの量子コンピューティング システムに当てはまります。
 しかし、測定装置が異なる基底状態のセットに関連付けられる可能性はあります。
 （測定については、後の章でより詳細に説明します。）
-@<br>{}
-　量子ビットが測定されると、(a) 状態は測定に関連付けられた基本状態の 1 つに変更され、(b) 測定装置によって結果の状態が通知されます。
-一般に、測定時に状態|𝜓⟩が基底状態|𝑎⟩に見つかる確率は次のように与えられる。
 
-//indepimage[eq_1_9]
-#@# \begin{equation}
-#@# Pr(|a\rangle) = |\langle \psi | a \rangle|^2\tag{1.9}
-#@# \end{equation}
+　量子ビットが測定されると、(a) 状態は測定に関連付けられた基本状態の 1 つに変更され、(b) 測定装置によって結果の状態が通知されます。
+一般に、測定時に状態@<m>{|\psi\rangle}が基底状態@<m>{|a\rangle}に見つかる確率は次のように与えられる。
+#@# //indepimage[eq_1_9]
+//texequation{
+Pr[\ket{a}] = |\langle \psi | a \rangle|^2 \tag{1.9}
+//}
 
 これをボーン則といいます。
-例えば、上の状態|𝜓⟩を測定した結果が|0⟩、|1⟩となる確率は次のように与えられます。
-
-//indepimage[eq_1_10]
-#@# \begin{equation}
-#@# Pr(|0\rangle) = |\langle \psi | 0 \rangle|^2 = |\alpha|^2 |\langle 0 | 0 \rangle|^2 = |\alpha|^2\tag{1.10}
-#@# \end{equation}
-
-//indepimage[eq_1_11]
-#@# \begin{equation}
-#@# Pr(|1\rangle) = |\langle \psi | 1 \rangle|^2 = |\beta|^2 |\langle 1 | 1 \rangle|^2 = |\beta|^2\tag{1.11}
-#@# \end{equation}
+例えば、上の状態@<m>{|\psi\rangle}を測定した結果が@<m>{|0\rangle}、@<m>{|1\rangle}となる確率は次のように与えられます。
+#@# //indepimage[eq_1_10]
+//texequation{
+Pr[|0\rangle] = |\langle \psi | 0 \rangle|^2 = |\alpha|^2 |\langle 0 | 0 \rangle|^2 = |\alpha|^2\tag{1.10}
+//}
+#@# //indepimage[eq_1_11]
+//texequation{
+Pr[|1\rangle] = |\langle \psi | 1 \rangle|^2 = |\beta|^2 |\langle 1 | 1 \rangle|^2 = |\beta|^2\tag{1.11}
+//}
 
 前にも記したとおりです。
 
 == ユニタリ演算と単一量子ビットゲート
-
-ある量子状態から別の量子状態への変換をゲートと呼びます。
-単一量子ビットゲートの効果は、𝛼と𝛽を新しい混合物𝛼′と𝛽′に変換することです。
-
-//indepimage[eq_1_12]
-#@# \begin{align}
-#@# \alpha' &= U_{11} \alpha + U_{12} \beta \notag \\
-#@# \beta' &= U_{21} \alpha + U_{22} \beta\tag{1.12}
-#@# \end{align}
+　ある量子状態から別の量子状態への変換をゲートと呼びます。
+単一量子ビットゲートの効果は、@<m>{\alpha}と@<m>{\beta}を新しい混合物@<m>{\alpha'}と@<m>{\beta'}に変換することです。
+#@# //indepimage[eq_1_12]
+//texequation{
+\begin{aligned}
+\alpha' &= U_{11} \alpha + U_{12} \beta \\
+\beta'  &= U_{21} \alpha + U_{22} \beta
+\end{aligned}\tag{1.12}
+//}
 
 これは行列方程式として表すことができます。
+#@# //indepimage[eq_1_13]
+//texequation{
+\begin{bmatrix}
+\alpha' \\
+ \beta'
+\end{bmatrix}
+=
+\begin{bmatrix}
+U_{11} & U_{12} \\
+U_{21} & U_{22}]
+\end{bmatrix}
+\begin{bmatrix}
+\alpha \\
+\beta
+\end{bmatrix}\tag{1.13}
+//}
+#@# //indepimage[eq_1_14]
+//texequation{
+|\psi'\rangle \equiv U |\psi\rangle\tag{1.14}
+//}
 
-//indepimage[eq_1_13]
-#@# \begin{equation}
-#@# \begin{bmatrix}
-#@# \alpha' \\
-#@# \beta'
-#@# \end{bmatrix}
-#@# =
-#@# \begin{bmatrix}
-#@# U_{11} & U_{12} \\
-#@# U_{21} & U_{22}
-#@# \end{bmatrix}
-#@# \begin{bmatrix}
-#@# \alpha \\
-#@# \beta
-#@# \end{bmatrix}\tag{1.13}
-#@# \end{equation}
-
-//indepimage[eq_1_14]
-#@# \begin{equation}
-#@# |\psi'\rangle \equiv U |\psi\rangle\tag{1.14}
-#@# \end{equation}
-
-状態ベクトルの長さは常に1でなければならないので、ベクトルの長さを保存する行列 𝑈 のみを使用できます。
-つまり、⟨𝜓′|𝜓′⟩ = ⟨𝜓|𝜓⟩ = 1となります。
-これにより、行列𝑈に非常に重要な制約が課せられます。
-
-//indepimage[eq_1_15]
-#@# \begin{equation}
-#@# \langle \psi' | \psi' \rangle = \langle \psi | U^\dagger U | \psi \rangle = 1\tag{1.15}
-#@# \end{equation}
+状態ベクトルの長さは常に1でなければならないので、ベクトルの長さを保存する行列 @<m>{U} のみを使用できます。
+つまり、@<m>{\langle \psi' | \psi' \rangle = \langle \psi | \psi \rangle = 1}となります。
+これにより、行列 @<m>{U} に非常に重要な制約が課せられます。
+#@# //indepimage[eq_1_15]
+//texequation{
+\langle \psi' | \psi' \rangle = \langle \psi | U^\dagger U | \psi \rangle = 1\tag{1.15}
+//}
 
 次の観察を使用します。
+#@# //indepimage[eq_1_16]
+//texequation{
+\langle \psi' | = (U |\psi\rangle)^\dagger = \langle \psi | U^\dagger.\tag{1.16}
+//}
 
-//indepimage[eq_1_16]
-#@# \begin{equation}
-#@# \langle \psi' | = (U |\psi\rangle)^\dagger = \langle \psi | U^\dagger.\tag{1.16}
-#@# \end{equation}
+@<m>{\langle \psi | 以来\psi \rangle = 1}なので、次のように結論付けられます。
+#@# //indepimage[eq_1_17]
+//texequation{
+U^\dagger U = I\tag{1.17}
+//}
 
-⟨𝜓|𝜓⟩ = 1 なので、
-
-//indepimage[eq_1_17]
-#@# \begin{equation}
-#@# U^\dagger U = I\tag{1.17}
-#@# end{equation}
-
-ここで𝐼は単位行列である
-
-//indepimage[eq_1_18]
-#@# \begin{equation}
-#@# I = \begin{bmatrix}
-#@# 1 & 0 \\
-#@# 0 & 1
-#@# \end{bmatrix}\tag{1.18}
-#@# \end{equation}
+ここで@<m>{I}は単位行列である
+#@# //indepimage[eq_1_18]
+//texequation{
+I = \begin{bmatrix}
+1 & 0 \\
+0 & 1
+\end{bmatrix}\tag{1.18}
+//}
 
 この要件を満たす行列はユニタリ行列と呼ばれます。
 これらの行列は、基底状態の混合を変更することによって量子ビットに対して操作を実行するものとして考えることができます。
