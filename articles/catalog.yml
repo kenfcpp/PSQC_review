@@ -5,6 +5,7 @@ PREDEF:
 CHAPS:
   - qubits-gates-circuits.re
   - physics_of_single_qubit_gates.re
+  - Physics_of_Two_Qubit_Gates.re
 
 APPENDIX:
   

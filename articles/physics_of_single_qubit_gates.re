@@ -134,7 +134,7 @@ Here we have used the fact that @<m>{R_z^c(\theta)\langle \psi|A|\psi\rangle = \
  which is easily verified by direct calculation.We have also used the fact that @<m>{(U|\psi\rangle)^\dagger = \langle \psi|U^\dagger}.
 
 To simplify our consideration of (2.8), 
- let us consider an infinitesimal rotation @<m>{\epsilon} about the axis @<m>{\hat{n}}
+ let us consider an infinitesimal rotation @<m>{\epsilon} about the axis @<m>{\hat{n\}}
  (a unit vector along the desired axis of rotation). 
  In this case we anticipate that @<m>{U} will depart only slightly from the identity operator, 
  so to first order in small quantities we can express @<m>{U} with the first two terms in a Maclaurin series:
@@ -901,21 +901,16 @@ Since Schrödinger’s equation must also be satisfied in the rotating frame,
 \begin{aligned}
 i\hbar \partial_t |\psi(t)\rangle_r
 &= i\hbar \partial_t \big(R_z^\dagger(t)\,|\psi(t)\rangle\big) \\
-
 &= i\hbar (\partial_t R_z^\dagger(t))\,|\psi(t)\rangle
 + i\hbar R_z^\dagger(t)\,\partial_t |\psi(t)\rangle \\
-
 &= i\hbar (\partial_t R_z^\dagger(t))\,|\psi(t)\rangle
 + R_z^\dagger(t)\,\mathcal{H}\,|\psi(t)\rangle \\
-
 &= i\hbar (\partial_t R_z^\dagger(t))\,R_z(t)\,|\psi(t)\rangle_r
 + R_z^\dagger(t)\,\mathcal{H}\,R_z(t)\,|\psi(t)\rangle_r \\
-
 &= \left[
 i\hbar (\partial_t R_z^\dagger(t))\,R_z(t)
 + R_z^\dagger(t)\,\mathcal{H}\,R_z(t)
 \right] |\psi(t)\rangle_r \\
-
 &= \mathcal{H}_r\,|\psi(t)\rangle_r
 \end{aligned}
 \tag{2.86}
@@ -1120,3 +1115,665 @@ e^{-i\Delta t + i\gamma}\,c_0
 //}
 Equations (2.101) and (2.102) can be written as the coupled-mode equations@<fn>{fn-5}
 //footnote[fn-5][TResearchersworking with integrated optical devices or microwave circuits and devices may recognize (2.101) and (2.102) from coupled-mode theory; e.g., see 5-7.]
+
+//texequation{
+\partial_t c_0 = \kappa_{01} c_1 e^{i\Delta t}, \quad
+\tag{2.103}
+//}
+//texequation{
+\partial_t c_1 = \kappa_{10} c_0 e^{-i\Delta t}
+\tag{2.104}
+//}
+where
+//texequation{
+\kappa_{01} = -i\frac{\Omega_R}{2} e^{-i\gamma} = -\kappa_{10}^*
+\tag{2.105}
+//}
+Solving (2.103) for @<m>{c_1} and substituting into (2.104) gives a second-order differential equation for @<m>{c_0}:
+//texequation{
+\ddot{c}_0 - i\Delta \dot{c}_0 + |\kappa|^2 c_0 = 0
+\tag{2.106}
+//}
+where @<m>{|\kappa_{01\}| = |\kappa_{10\}| = |\kappa|}, and @<m>{\quad |\kappa| = \frac{\Omega_R\}{2\}}.
+
+Exponential solutions of (2.106) can be obtained from the roots of the corresponding
+ characteristic equation
+//texequation{
+r^2 - i\Delta r + |\kappa|^2 = 0
+\tag{2.107}
+//}
+The roots of this equation are
+//texequation{
+r_{a,b} = i\frac{\Delta \pm \sqrt{\Delta^2 + 4|\kappa|^2}}{2}
+= i\frac{\Delta \pm \Omega}{2}
+\tag{2.108}
+//}
+where
+//texequation{
+\Omega = \sqrt{\Delta^2 + 4|\kappa|^2}
+= \sqrt{\Delta^2 + \Omega_R^2}
+\tag{2.109}
+//}
+Two independent exponential solutions are therefore
+//texequation{
+c_{0a} = e^{i(\Delta/2)t + i\Omega t/2}, \quad
+c_{0b} = e^{i(\Delta/2)t - i\Omega t/2}
+\tag{2.110}
+//}
+Taking the sum and difference of these expressions allows us to obtain alternate
+ independent solutions as
+//texequation{
+c_{0a} = e^{i(\Delta/2)t}\cos(\Omega t/2), \quad
+c_{0b} = e^{i(\Delta/2)t}\sin(\Omega t/2)
+\tag{2.111}
+//}
+The general solution can be expressed as an arbitrary linear combination of these two
+ independent solutions. 
+ Consequently we can write
+//texequation{
+c_0(t) = e^{i(\Delta/2)t}
+\left(A\cos(\Omega t/2) + B\sin(\Omega t/2)\right)
+\tag{2.112}
+//}
+The general expression for @<m>{c_1} can be obtained from (2.103). 
+ After some straightforward algebra, the solutions can be expressed in terms of the initial values at @<m>{t = 0}:
+//texequation{
+c_0(t) = e^{i(\Delta/2)t}
+\left[
+c_0(0)\cos(\Omega t/2)
++ \frac{2\kappa_{01}c_1(0) - i\Delta c_0(0)}{\Omega}\sin(\Omega t/2)
+\right]
+\tag{2.113}
+//}
+//texequation{
+c_1(t) = e^{-i(\Delta/2)t}
+\left[
+c_1(0)\cos(\Omega t/2)
++ \frac{2\kappa_{10}c_0(0) + i\Delta c_1(0)}{\Omega}\sin(\Omega t/2)
+\right]
+\tag{2.114}
+//}
+//image[fig_2_5][Solutions to the coupled mode equations for Δ = 0 and Δ∕𝜅 = 3. For the case of Rabi oscillations, |𝜅t| = ΩRt/2.][scale=0.8]{
+//}
+As an example, consider the case @<m>{c_0(0) = 1} and @<m>{c_1(0) = 0}. The probabilities of obtaining the states are
+//texequation{
+|c_0(t)|^2
+= \cos^2(\Omega t/2)
++ \left(\frac{\Delta}{\Omega}\right)^2 \sin^2(\Omega t/2)
+\tag{2.115}
+//}
+//texequation{
+|c_1(t)|^2
+= \left(\frac{2|\kappa|}{\Omega}\right)^2 \sin^2(\Omega t/2)
+\tag{2.116}
+//}
+These solutions are plotted for the two cases @<m>{\Delta = 0} and @<m>{\Delta/\kappa = 3} in Figure 2.5. 
+ Note that significant coupling only occurs when @<m>{\Delta \approx 0}.
+
+== Quantum State Tomography
+Supposewe have executed several rotation commands on a qubit by applying the appropriate RF pulses.
+ How can we verify if we obtained the state we intended? Referring to Figure 2.3, 
+ we could determine the state @<m>{|\psi\rangle} if we could measure the projection of the state on each axis. 
+ As we have discussed, 
+ making a measurement on the state will collapse the state onto either @<m>{|0⟩} or @<m>{|1⟩} with probabilities determined 
+ by the squares of the magnitudes of the amplitudes of these components of the state. 
+ To estimate these probabilities, we need to prepare and measure the same state a large number of times. 
+ The percentage of times we obtain @<m>{|0⟩} allows us to estimate this probability, and similarly for @<m>{|1⟩}. 
+ This suggests that we could obtain the angle @<m>{\theta} from the calculation
+//texequation{
+\cos\theta = P_0(|\psi\rangle) - P_1(|\psi\rangle)
+\tag{2.117}
+//} 
+where @<m>{P_0(|\psi\rangle)} is the probability of obtaining |0⟩ and @<m>{P_1(|\psi\rangle)} is the probability of obtaining
+ @<m>{|1⟩} when the state @<m>{|\psi\rangle} is measured. 
+ But ifwe can only measure the projections along the @<m>{z} axis, 
+ how do we determine the projections along @<m>{x} and @<m>{y}?We can do this by rotating
+ the state vector so that the component we want to measure is along @<m>{z}. 
+ For example, consider a rotation of 𝜋 around the axis @<m>{\hat{n\} = (\hat{x\} + \hat{y\})/\sqrt{2\}}, as shown in Figure 2.6(a).
+//image[fig_2_6][Rotations enabling measurement of the projections of the state vector along the x and y axes. (a) The Hadamard gate corresponds to rotation of the state vector around an axis in the x–z plane making a 45o angle with the z axis. This rotates the x component to z axis. (b) z rotation of −90o followed by a Hadamard rotation to estimate the projection along y.][scale=0.8]{
+//}
+
+From (2.31) we have
+//texequation{
+\begin{aligned}
+U_{\hat{n}}(\pi)
+&= I\cos\frac{\pi}{2}
+- i\frac{1}{\sqrt{2}}(\sigma_x + \sigma_z)\sin\frac{\pi}{2} \\
+&= -i\frac{1}{\sqrt{2}}(\sigma_x + \sigma_z) \\
+&= -i\frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 & 1 \\
+1 & -1
+\end{bmatrix} \\
+&= -iH
+\end{aligned}
+\tag{2.118}
+//}
+Apart from a global phase, we see that this rotation is represented simply by the Hadamard gate.
+ To see why this rotation is of interest, recall that the state represented 
+ by a vector along @<m>{x} is @<m>{|+\rangle = (|0 \rangle + |1\rangle)/\sqrt{2\}}, 
+ and the state represented by a vector along
+ @<m>{-x} is @<m>{|-\rangle = (|0\rangle - |1\rangle)/\sqrt{2\}}. 
+ Applying a Hadamard gate to these states gives
+//texequation{
+\begin{aligned}
+H|+\rangle
+&= \frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 & 1 \\
+1 & -1
+\end{bmatrix}
+\frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 \\
+1
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+1 \\
+0
+\end{bmatrix}
+= |0\rangle
+\end{aligned}
+\tag{2.119}
+//}
+and
+//texequation{
+\begin{aligned}
+H|-\rangle
+&= \frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 & 1 \\
+1 & -1
+\end{bmatrix}
+\frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 \\
+-1
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+0 \\
+1
+\end{bmatrix}
+= |1\rangle
+\end{aligned}
+\tag{2.120}
+//}
+We see then that the Hadamard gate rotates the state vector so that its @<m>{x} component lies along the @<m>{z} axis. 
+ Subsequently making measurements enables the component of the state vector along @<m>{x} to be estimated. 
+ Thus we can write
+//texequation{
+\sin\theta \cos\phi
+= P_0(H|\psi\rangle) - P_1(H|\psi\rangle)
+\tag{2.121}
+//}
+Finally, we can estimate the projection along the @<m>{y} axis by first rotating the @<m>{y} axis
+ into the @<m>{x} axis using a @<m>{z} rotation of −𝜋∕2, 
+ followed by a Hadamard gate to again rotate @<m>{x} into @<m>{z} as shown in Figure 2.6(b). 
+ Note that the @<m>{z} rotation operator can be written
+//texequation{
+R_z(\phi)
+= e^{-i\phi/2}
+\begin{bmatrix}
+1 & 0 \\
+0 & e^{i\phi}
+\end{bmatrix}
+\equiv e^{-i\phi/2} P(\phi)
+\tag{2.122}
+//}
+where @<m>{P(\phi)} is called a phase gate, and introduces a phase shift of 𝜙 between the states |0⟩ and |1⟩.@<fn>{fn-6}
+ When written this way it is easy to see that a @<m>{Z} gate is created by a rotation of 𝜋 (cf. (2.47)). 
+ At this point it is convenient to introduce another gate, @<m>{S = Z^{1/2\}}:
+
+//footnote[fn-6][For a single qubit operation, the difference between 𝑅𝑧 and 𝑃 is a global phase, and is inconsequential. However, in multi-qubit states, 𝑅𝑧 and 𝑃 may not be equivalent.]
+
+//texequation{
+S =
+\begin{bmatrix}
+1 & 0 \\
+0 & i
+\end{bmatrix}
+\tag{2.123}
+//}
+In terms of this gate, we see that a @<m>{Z} rotation of −𝜋∕2 is represented by @<m>{S^\dagger}:
+//texequation{
+P(-\pi/2) =
+\begin{bmatrix}
+1 & 0 \\
+0 & -i
+\end{bmatrix}
+= S^\dagger
+\tag{2.124}
+//}
+We conclude that to estimate the projection along the @<m>{y} axis,
+ we apply the operator@<m>{H S^\dagger} followed by a measurement. 
+ Similar to before we can therefore write
+//texequation{
+\sin\theta \sin\phi
+=
+P_0(HS^\dagger|\psi\rangle)
+-
+P_1(HS^\dagger|\psi\rangle)
+\tag{2.125}
+//}
+and the azimuth angle 𝜙 on the Bloch sphere can be estimated from@<fn>{fn-7}
+
+//footnote[fn-7][FNote that a 4-quadrant arctangent function should be used to invert this relation, in general.]
+//texequation{
+\tan\phi
+=
+\frac{
+P_0(HS^\dagger|\psi\rangle)
+-
+P_1(HS^\dagger|\psi\rangle)
+}{
+P_0(H|\psi\rangle)
+-
+P_1(H|\psi\rangle)
+}
+\tag{2.126}
+//}
+Having estimated both @<m>{\theta} and @<m>{\phi} enables us to locate the state vector on the Block sphere,
+ and we can express the state vector in the @<m>{z} basis using (2.40).
+
+== Expectation Values and the Pauli Operators
+
+In Section 2.2.2.2 we considered the case where the state vector represented the spin of a particle.
+ To find the expectation values of the@<m>{𝑥},@<m>{𝑦},@<m>{z} components of the spin, 
+ we applied the relevant Pauli operator to the state vector. 
+ In other words, to obtain the expected value of the @<m>{x} component 
+ we calculated @<m>{\langle\psi| \sigma_x |\psi\rangle}, and similarly for @<m>{y} and @<m>{z}.
+
+Based on this, one might think that to construct a quantum circuit to measure the @<m>{x} component of a qubit state vector,
+ it would be necessary to apply @<m>{\sigma_x} (i.e., an @<m>{X} gate) to the qubit of interest prior to measurement. 
+ However, from the previous section we see that simply preparing a state multiple times 
+ and taking the average of the measurements yields an estimate for the @<m>{z} component. 
+ Similarly, to estimate the @<m>{x} or @<m>{y} components, 
+ it is simply necessary to perform suitable rotations to align the desired component with the @<m>{z} axis, 
+ then again prepare and measure the state multiple times to estimate the average. 
+ Said differently, @<m>{\langle\psi| \sigma_x |\psi\rangle} represents mathematical operations 
+ that yield the expected value of the @<m>{x} component of spin—or more generally of the state vector. 
+ But by definition, (an approximation to) the expectation value is obtained
+ by taking a large number of measurements of the @<m>{x} component and averaging them.
+ Since in quantum computing we actually take measurements, we obtain estimates of
+ the state vector components by taking the averages of large numbers of measurements,
+ rather than doing calculations involving the Pauli matrices.
+
+As an example, suppose we prepared and measured an identical state @<m>{N} times (each time is referred to as a “shot”). 
+ Out of these shots, @<m>{|0\rangle} is measured @<m>{N_0} times, and @<m>{|1\rangle} is measured @<m>{N_1} times, 
+ where @<m>{N_0 + N_1 = N}. We obtain an estimate of the @<m>{z} component of the state as follows:
+//texequation{
+\langle \psi | \sigma_z | \psi \rangle
+= \cos\theta
+= P_0(|\psi\rangle) - P_1(|\psi\rangle)
+\approx \frac{N_0 - N_1}{N}
+\tag{2.127}
+//}
+Clearly the more shots we execute (larger @<m>{N}), the better estimate of the @<m>{z} component we obtain. 
+ To make this more quantitative, we note that by the Central Limit Theorem, as@<m>{N} becomes large, 
+ the variance of the estimate is @<m>{\sigma^2/N}, where the variance of an individual measurement is @<m>{\sigma^2}. 
+ Since the measurement can only yield ±1, we can estimate an upper limit on the error
+ as the sample standard deviation @<m>{1/\sqrt{N\}}. 
+ These ideas are explored in more detail in Exercise 2.1.
+
+== Density Matrix
+
+Before we move to more complex qubit interactions, it is useful to introduce another representation of a quantum state, 
+ known as a density matrix or density operator.@<fn>{fn-8} 
+ The density matrix is a generalization of the state vector representation. 
+ It can represent a larger set of possible quantum states, 
+ including those that do not lie on the surface of the Bloch sphere.
+
+//footnote[fn-8][Density operator is a more general term, as the density matrix depends on the choice of basis vectors for the state space. Since we restrict ourselves to the standard basis, we will use the terms interchangeably.]
+
+Until now, we have only considered states that lie on the surface of the Bloch sphere, so let’s begin there.
+ Such a state is known as a pure state. 
+ Aswe know, it can be precisely represented as a two-element state vector @<m>{|\psi\rangle}, 
+ and the density matrix @<m>{\rho} is defined as:
+//texequation{
+\rho \equiv |\psi\rangle \langle \psi |
+\tag{2.128}
+//}
+Rather than a two-element vector, 𝜌 is a 2 × 2-element matrix.
+ Following the definition, here are the density matrices for some states that we have encountered before:
+//texequation{
+|0\rangle\langle 0|
+=
+\begin{bmatrix}
+1 \\
+0
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0 \\
+0 & 0
+\end{bmatrix}
+\tag{2.129}
+//}
+//texequation{
+|1\rangle\langle 1|
+=
+\begin{bmatrix}
+0 \\
+1
+\end{bmatrix}
+\begin{bmatrix}
+0 & 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 & 0 \\
+0 & 1
+\end{bmatrix}
+\tag{2.130}
+//}
+//texequation{
+|+\rangle\langle +|
+=
+\left(
+\frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 \\
+1
+\end{bmatrix}
+\right)
+\left(
+\frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 & 1
+\end{bmatrix}
+\right)
+=
+\frac{1}{2}
+\begin{bmatrix}
+1 & 1 \\
+1 & 1
+\end{bmatrix}
+\tag{2.131}
+//}
+//texequation{
+|-\rangle\langle -|
+=
+\left(
+\frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 \\
+-1
+\end{bmatrix}
+\right)
+\left(
+\frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 & -1
+\end{bmatrix}
+\right)
+=
+\frac{1}{2}
+\begin{bmatrix}
+1 & -1 \\
+-1 & 1
+\end{bmatrix}
+\tag{2.132}
+//}
+Note that basis states (@<m>{|0\rangle} and @<m>{|1\rangle}) have no off-diagonal entries, 
+ but superposition states (@<m>{|+\rangle} and @<m>{|-\rangle}) do.
+ Also note that the diagonal entries @<m>{\rho_{jj\}} represent the probability of 
+ measuring state @<m>{|j\rangle} in the standard basis. 
+ Therefore the sum of the diagonal entries, also known as the trace of the matrix, will always be 1.
+//texequation{
+\mathrm{Tr}(\rho) = \sum_j \rho_{jj} = 1
+\tag{2.133}
+//}
+For a general state @<m>{|\psi\rangle = \cos\frac{\theta\}{2\} + e^{i\phi\}\sin\frac{\theta\}{2\}},
+//texequation{
+|\psi\rangle\langle\psi|
+=
+\begin{bmatrix}
+\cos^2\frac{\theta}{2}
+&
+e^{-i\phi}\sin\frac{\theta}{2}\cos\frac{\theta}{2}
+\\
+e^{i\phi}\sin\frac{\theta}{2}\cos\frac{\theta}{2}
+&
+\sin^2\frac{\theta}{2}
+\end{bmatrix}
+\tag{2.134}
+//}
+One feature of the density matrix is that it can also represent quantum states that are not on the surface of the Bloch sphere,
+ and thus cannot be defined by a state vector.
+ Such states are known as mixed states. 
+ One example of a mixed state is the description of the state of one qubit that is part of an entangled group of qubits. 
+ We will defer that discussion until after we discuss two-qubit states and gates in more detail.
+
+The second example is when the state is described as a probabilistic ensemble of pure states, 
+ each with a specified probability. 
+ For example, suppose we prepare a qubit in the |0⟩ state, but there is a 10% probability that our preparation is faulty, 
+ and the qubit actually ends up in the |1⟩ state. 
+ (This is very bad hardware that should probably be retired.) 
+ If we want to model the uncertainty in that qubit’s state, 
+ we use the following definition of the density matrix:
+//texequation{
+\rho \equiv \sum_i p_i |\psi_i\rangle \langle \psi_i |
+\tag{2.135}
+//}
+where @<m>{p_i} is the probability of being in state @<m>{|\psi_i\rangle}. For our particular example,
+//texequation{
+|\psi_0\rangle = |0\rangle,\quad p_0 = 0.90
+\tag{2.136}
+//}
+//texequation{
+|\psi_1\rangle = |1\rangle,\quad p_1 = 0.10
+\tag{2.137}
+//}
+@<m>{\rho = 0.90 |0\rangle\langle 0| + 0.10 |1\rangle\langle 1|}
+//texequation{
+\begin{aligned}
+\rho
+&= 0.90\,|0\rangle\langle 0| + 0.10\,|1\rangle\langle 1| \\
+&=
+\begin{bmatrix}
+0.90 & 0 \\
+0 & 0.10
+\end{bmatrix}
+\end{aligned}
+\tag{2.138}
+//}
+We can distinguish a pure state from a mixed state using the trace of @<m>{ \rho^2 }:
+//texequation{
+\mathrm{Tr}(\rho^2) =
+\begin{cases}
+1 & \text{(pure state)} \\
+< 1 & \text{(mixed state)}
+\end{cases}
+\tag{2.139}
+//}
+You can verify that this is true for the pure and mixed states shown above.
+
+With respect to the Bloch sphere, a mixed state lies inside the surface; a vector from
+ the origin to the point representing the mixed state is not a unit vector. 
+ Any density matrix can be written in the following form:
+
+//image[fig_2_7][(a) Bloch sphere representation of a mixed state, and (b) the result of applying a Hadamard gate (H) to the mixed state. Plots generated using Qiskit [2.][scale=1.0]{
+//}
+
+//texequation{
+\rho
+=
+\frac{1}{2}
+\begin{bmatrix}
+1 + z & x - i y \\
+x + i y & 1 - z
+\end{bmatrix}
+\tag{2.140}
+//}
+//texequation{
+\rho
+=
+\frac{1}{2}
+\left(
+I + x\sigma_x + y\sigma_y + z\sigma_z
+\right)
+\tag{2.141}
+//}
+where @<m>{x}, @<m>{y}, and @<m>{z} are the Cartesian coordinates in the Bloch sphere representation.
+ (For the proof, see Rieffel and Polak [8], Section 10.1.3.) 
+ Using our simple mixed-state example above, the Bloch vector coordinates are (0, 0, 0.8), 
+ shown in Figure 2.7, which is clearly not a unit vector.
+
+How does the density matrix change when a unitary@<m>{U} is applied to a quantum state?
+ Each state @<m>{|\psi_i\rangle} in the ensemble becomes @<m>{U|\psi_i\rangle}, so the new density matrix is
+//texequation{
+\rho'
+=
+\sum_i p_i\,U|\psi_i\rangle\langle\psi_i|U^\dagger
+=
+U\rho U^\dagger
+\tag{2.142}
+//}
+As with the state vector, the unitary does not change the length of the Bloch vector associated with the state, 
+ only its orientation.
+To illustrate, let’s apply the Hadamard gate to our example mixed state, recalling that @<m>{H = H^\dagger}.
+//texequation{
+\begin{aligned}
+\rho'
+&= H\rho H \\
+&=
+\frac{1}{2}
+\begin{bmatrix}
+1 & 1 \\
+1 & -1
+\end{bmatrix}
+\begin{bmatrix}
+0.90 & 0 \\
+0 & 0.10
+\end{bmatrix}
+\begin{bmatrix}
+1 & 1 \\
+1 & -1
+\end{bmatrix} \\
+&=
+\frac{1}{2}
+\begin{bmatrix}
+1 & 1 \\
+1 & -1
+\end{bmatrix}
+\begin{bmatrix}
+0.90 & 0.90 \\
+0.10 & -0.10
+\end{bmatrix} \\
+&=
+\frac{1}{2}
+\begin{bmatrix}
+1 & 0.8 \\
+0.8 & 1
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+0.5 & 0.4 \\
+0.4 & 0.5
+\end{bmatrix}
+\end{aligned}
+\tag{2.143}
+//}
+The Bloch coordinates for @<m>{\rho'} are (0.8, 0, 0)—the @<m>{x} and @<m>{z} coordinates have been swapped, as expected.
+
+Finally, we want to be clear to distinguish a mixed state from a pure superposition state.
+ Because the notion of probabilities factors into both, there can be some confusion.
+ The following example illustrates the difference.
+
+First, consider a pure state defined by a state vector:
+//texequation{
+|\psi\rangle = \frac{1}{\sqrt{2}} |0\rangle + \frac{1}{\sqrt{2}} |1\rangle. 
+\tag{2.144}
+//}
+Next, consider the state represented by a density matrix:
+//texequation{
+\begin{aligned}
+\rho &= \frac{1}{2} |0\rangle \langle 0| + \frac{1}{2} |1\rangle \langle 1| \\
+&= \begin{bmatrix} 0.5 & 0 \\ 0 & 0.5 \end{bmatrix}. 
+\end{aligned} \tag{2.145}
+//}
+If we measure @<m>{|\psi\rangle}, we have a 50% probability of observing @<m>{|0\rangle}
+ and a 50% chance of observing @<m>{|1\rangle}.
+ The same is true if we measure @<m>{\rho}: 50% @<m>{|0\rangle} and 50% @<m>{|1\rangle}. So are the two states the same?
+
+Suppose we use state tomography (Section 2.3) to learn more about the state.
+ We measure @<m>{|\psi\rangle} in the @<m>{x} basis by first computing @<m>{H|\psi\rangle}. 
+ This time we observe @<m>{|0\rangle} 100% of the time, because @<m>{H|\psi\rangle = |0\rangle}. 
+ Then we measure @<m>{H\rho H}, and we see 50% @<m>{|0\rangle} and 50% @<m>{|1\rangle}. 
+ Why? First, we observe that @<m>{H\rho H = \rho}, so the state has not changed. 
+ Second, we consider that the mixed state is @<m>{|0\rangle} 
+ with 50% probability—measuring @<m>{H|0\rangle = |+\rangle} will yield 50% @<m>{|0\rangle} and 50% @<m>{|1\rangle}. 
+ With 50% probability, the mixed state is @<m>{|1\rangle}, and measuring
+ @<m>{H|1\rangle = |-\rangle} will also yield 50% @<m>{|0\rangle} and 50% @<m>{|1\rangle}. 
+ Since this result is very different, it is clear that the two states are not the same.
+
+We can also compute the Bloch sphere coordinates for each state, which again makes it clear that these are very different.
+ The coordinates for |𝜓⟩ are (1, 0, 0), while the coordinates for @<m>{\rho} are (0, 0, 0).
+ Note that any rotation of @<m>{\rho} will not change its coordinates,
+ so measuring in any basis will result in the same 50-50 distribution of results. 
+ This is known as a maximally mixed state, because we have no information about the state along any axis. 
+ As a matter of fact, there are a number of different ensembles of pure states that can lead to the same density matrix, 
+ which will be made clear in Exercise 2.5.
+
+While there is uncertainty in the measurement of either state, the kinds of uncertainty are different.
+ Measurement of @<m>{|\psi\rangle} exhibits quantum uncertainty; 
+ we are uncertain of the result because of the intrinsic nature of the quantum state and the nature of measurement. 
+ The density matrix, however, represents classical uncertainty about which quantum state was prepared.
+
+== Exercises
+
+2.1 In this exercise we explore the statistics of the expected value obtained by executing
+ a large number of “shots” on a quantum circuit. 
+ We note that the result of a measurement is either @<m>{|0\rangle} or @<m>{|1\rangle}, 
+ which we can represent by +1 and -1, respectively. 
+ A random variable @<m>{Z} with two possible values is an example of a random variable with a two-point distribution, 
+ and the value of @<m>{Z} from the @<m>{i}th measurement we denote @<m>{z}. 
+ According to the Central Limit Theorem, thedistribution of @<m>{\sum_{i=1\}^N z_i/N} tends 
+ toward a Gaussian (Normal) distribution for large @<m>{N}, 
+ with variance @<m>{\sigma^2/N}, where @<m>{\sigma^2} is the variance of @<m>{Z}. 
+ In this exercisewe will find an upper bound on the value of @<m>{\sigma^2}, 
+ and hence an upper bound on the standard deviation estimate @<m>{\sigma/\sqrt{N\}}.
+
+ (a) Let Pr(@<m>{Z = 1}) = @<m>{p}, and Pr(@<m>{Z = -1}) = 1 - @<m>{p}. 
+ Find E[@<m>{Z^2}] and E[@<m>{Z}].
+
+ (b) Find the variance Var[@<m>{Z}] = E[@<m>{Z^2}] - E[@<m>{Z}]^2.
+
+ (c) Show that the maximum value of the variance of @<m>{Z} is 1, so an upper bound on the standard deviation 
+ of @<m>{\sum_{i=1\}^N z_i/N} is @<m>{\sigma \leq 1/\sqrt{N\}}.
+
+2.2 A particular state |𝜓⟩ has been prepared a large number of times,
+ and the following estimated probabilities are obtained from measurements: 
+ @<m>{P_0(|\psi\rangle) = 0.8}, @<m>{P_1(|\psi\rangle) = 0.2}, @<m>{P_0(H |\psi\rangle) = 0.7}, @<m>{P_1(H |\psi\rangle) = 0.3}, @<m>{P_0(HS^\dagger |\psi\rangle) = 0.6},
+ @<m>{P_1(HS^\dagger |\psi\rangle) = 0.4}. 
+ Find estimates of the angles @<m>{\theta}, @<m>{\phi} locating the state on the Bloch Sphere.
+
+2.3 Show that @<m>{X Y X = -Y} and use this to prove that @<m>{X R_y(\theta) X = R_y(-\theta)} [9].
+
+2.4 Consider the following definitions:
+
+ @<m>{A ≡ R_z(\phi)R_y(\theta/2)}
+
+ @<m>{B ≡ R_y(-\theta/2)R_z(-(\lambda + \phi)/2)}
+
+ @<m>{C ≡ R_z((\lambda - \phi)/2)}
+
+ (a) Show that @<m>{ABC = I}.
+
+ (b) Show that @<m>{AXBXC = R_z(\phi)R_y(\theta)R_z(\lambda)}. 
+  The purpose of this exercise is to show that any single-qubit 
+  unitary @<m>{U} can be implemented using @<m>{AXBXC} with appropriate choices of 
+  @<m>{\phi}, @<m>{\theta}, and @<m>{\lambda}, up to a global phase.
+
+2.5 Consider these two pure states:
+//texequation{
+|a\rangle = \sqrt{0.90} |0\rangle + \sqrt{0.10} |1\rangle, \quad |b\rangle = \sqrt{0.90} |0\rangle - \sqrt{0.10} |1\rangle
+//}
+ Compute the density matrix @<m>{\rho = \frac{1\}{2\} |a\rangle \langle a| + \frac{1\}{2\} |b\rangle \langle b|}. 
+ Compare to Eq. (2.138). 
+ Does a density matrix uniquely correspond to a particular ensemble of pure states?
