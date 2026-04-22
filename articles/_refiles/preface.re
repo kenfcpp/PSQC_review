@@ -20,7 +20,7 @@ As we have delved more deeply into quantum computing over the past several years
  Band theory, effective mass, tunneling, and perhaps the hydrogen atom are covered, 
  but quantum computing involves 2-level systems, state vectors and rotations, Hamiltonians,
  and unitary operators—topics not normally emphasized in device physics courses.
- Further, there is very little available in the current introductory literature explaining how the systems operate.
+ Further, there is very little available in the current introductory literature explaining @<i>{how the systems operate}.
 
 Just as semiconductor physics became a standard component of electrical engineering curricula 
  beginning in the early 1960s, we believe that quantum computing will become integral parts of 
@@ -29,6 +29,7 @@ Just as semiconductor physics became a standard component of electrical engineer
  including device physics and modeling, nanofabrication, RF and optical systems, signal processing,
  information theory, error correction and coding, transpilers and compilers, system architecture, 
  and algorithms and applications.
+
 At the time of this writing, there are competing technologies for the implementation of quantum computing, 
  including trapped ions, quantum dots, topological structures, and artificial atoms 
  made with superconducting devices. 

@@ -3,68 +3,67 @@
 == Bits and Qubits
 Digital systems that are most familiar are based on binary digits,
  or “bits.” 
-Each bit can take on either the value “1” or “0,” and any arbitrary data can be represented
+ Each bit can take on either the value “1” or “0,” and any arbitrary data can be represented
  by such a binary representation.
-We will refer to these familiar systems as "classical" systems, since they are governed
+ We will refer to these familiar systems as "classical" systems, since they are governed
  by the everyday laws of classical physics.
 
 Quantum computing is different from classical computing in a number of significant ways.
-The fundamental unit of information in quantum computing is the @<i>{qubit} (pronounced "KEW-bit"),
+ The fundamental unit of information in quantum computing is the @<i>{qubit} (pronounced "KEW-bit"),
  short for quantum bit.
-The capabilities and behavior of qubits are quite different than bits,
+ The capabilities and behavior of qubits are quite different than bits,
  and we begin by pointing out and discussing the key differences as a launching point
  for our study of quantum computing.
 
 === Circuits in Space vs. Circuits in Time
 A simple classical logic circuit is represented by the NOT gate shown in Figure 1.1(a).
-The NOT gate turns a "0" into "1" and vice versa.
-In this circuit diagram the horizontal direction represents space, i.e.,
+ The NOT gate turns a "0" into "1" and vice versa.
+ In this circuit diagram the horizontal direction represents @<i>{space}, i.e.,
  the input and output of the circuit are physically accessible from different points in the circuit,
  and they can be measured simultaneously.
 
-The quantum version of the NOT gate is the X gate shown in Figure 1.1(b).
-For qubits, the "0" and "1" states are normally written @<m>{|0\rangle},
+ The quantum version of the NOT gate is the @<m>{X} gate shown in Figure 1.1(b).
+ For qubits, the "0" and "1" states are normally written @<m>{|0\rangle},
  and @<m>{|1\rangle}, respectively.
-We will discuss the meaning of this notation in more detail in a future section,
+ We will discuss the meaning of this notation in more detail in a future section,
  but for now just consider them to be labels for the two states.
-In this case, the horizontal direction represents time, i.e.,
+ In this case, the horizontal direction represents time, i.e.,
  the input and output of the circuit represent the state of the same qubit after performing
- the @<i>{X} gate operation.
-In other words, unlike the usual structure of classical logic,
+ the @<m>{X} gate operation.
+ In other words, unlike the usual structure of classical logic,
  a quantum gate represents an operation that you perform on a @<i>{single} qubit or set of qubits.
-The output effectively overwrites the input, and every time a gate is applied it changes
+ The output effectively overwrites the input, and every time a gate is applied it changes
  the state of the qubit.
 
 === Superposition
 A classical bit must either be a "0" or a "1." In contrast, a qubit can also be in a
  @<i>{super position state} that is part "0" and part "1".
-If the qubit is in a "1" or "0" state, we say the qubit is in a @<i>{basis} state.@<fn>{fn-1} 
+ If the qubit is in a "1" or "0" state, we say the qubit is in a @<i>{basis} state.@<fn>{fn-1} 
 //image[fig_1_1][Interpretation of classical versus quantum NOT gates.][scale=0.8]{
 //}
 //footnote[fn-1][To be more precise, |0> and |1> are known as the "computational basis" or "standard basis" states. For this chapter, we will restrict our discussion to the standard basis and will simply refer to basis states.]
-
-For basis states, the state of the qubit can be measured any number of times without changing the state,
+ For basis states, the state of the qubit can be measured any number of times without changing the state,
  much like measuring the state of a classical gate.
-A superposition state will also yield either a "0" or a "1" when measured,
+ A superposition state will also yield either a "0" or a "1" when measured,
  with a probability determined by the mixture.
-In this case the action of making the measurement will "collapse" the superposition state onto
+ In this case the action of making the measurement will "collapse" the superposition state onto
  one of the constituent basis states,
  and the information stored in the superposition state will be lost.
-For example, If @<m>{|\psi\rangle} happens to represent a superposition state,
+ For example, If @<m>{|\psi\rangle} happens to represent a superposition state,
  then measuring the qubit at any time will collapse the state to either
  @<m>{|0\rangle} or @<m>{|1\rangle}, destroying the information
  in the superposition state.
-From this point on, repeated measurement of the qubit will always yield the same result as
+ From this point on, repeated measurement of the qubit will always yield the same result as
  the first measurement, just like a classical bit.
 
 Mathematically, a superposition state can be written aswhere @<m>{\alpha} and @<m>{\beta} are complex constants.
 //texequation[eq:prob]{
 \ket{\psi} = \alpha \ket{0} + \beta \ket{1} \tag{1.1}
 //}
-As mentioned, if such a superposition state is measured,
+ As mentioned, if such a superposition state is measured,
  it will always give either @<m>{|0\rangle} or @<m>{|1\rangle} 
  but with probabilities of each determined by @<m>{\alpha} and @<m>{\beta}.
-Specifically, the probabilities of measuring the two possible outcomes are given by
+ Specifically, the probabilities of measuring the two possible outcomes are given by
 #@# //indepimage[eq_1_2]
 //texequation{
 \Pr(0) = |\alpha|^2, \quad \Pr(1) = |\beta|^2\tag{1.2}
@@ -84,7 +83,7 @@ This ability to represent superposition states is one of the secrets to the powe
 === No Cloning
 In a classical logic circuit we can measure the state of a bit at any time,
  and make as many copies of the state as we want. 
-We can also do this for a qubit if it is known to be in one of the basis states;
+ We can also do this for a qubit if it is known to be in one of the basis states;
  as described above,
  we can measure the @<m>{|0\rangle} or @<m>{|1\rangle} state
  without disturbing it, and we can make as many copies of @<m>{|0\rangle}
@@ -92,39 +91,39 @@ We can also do this for a qubit if it is known to be in one of the basis states;
 
 However, it turns out that it is not possible to create a precise, independent copy of
  an @<i>{arbitrary} quantum state.
-This is known as @<i>{the no-cloning theorem}.
-We'll show a proof in Section 1.7, but for now let us consider the challenges this poses
+ This is known as @<i>{the no-cloning theorem}.
+ We'll show a proof in Section 1.7, but for now let us consider the challenges this poses
  to the quantum programmer.
 
-For example, we can't get estimates of @<m>{\alpha} or @<m>{\beta} from running a circuit once.
-Cloning would allow me to run the circuit, make lots of copies of the result,
+ For example, we can't get estimates of @<m>{\alpha} or @<m>{\beta} from running a circuit once.
+ Cloning would allow me to run the circuit, make lots of copies of the result,
  and then measure each copy to estimate @<m>{|\alpha|^2} and @<m>{|\beta|^2} by the
  probability of measuring @<m>{|0\rangle} or @<m>{|1\rangle}. 
-Without cloning, we can only measure the result once.
-To get many measurements, we must run the same computation many times to produce (hopefully!)
+ Without cloning, we can only measure the result once.
+ To get many measurements, we must run the same computation many times to produce (hopefully!)
  the same result over and over.
 
 We cannot make copies of states for breakpoints, or to help with debugging or error recovery.
-It is also challenging to apply different operators to a single state during the course of
+ It is also challenging to apply different operators to a single state during the course of
  a computation.
-Classical programmers take the ability to copy a state for granted, and this limitation
+ Classical programmers take the ability to copy a state for granted, and this limitation
  requires some adjustment.
 
 It turns out that it is possible to copy a quantum state using entanglement (Section 1.1.5),
  but only by destroying the state being copied.
-This represents a @<i>{transfer} of state rather than a copy, and is referred to as @<i>{teleportation}.
+ This represents a @<i>{transfer} of state rather than a copy, and is referred to as @<i>{teleportation}.
 
 === Reversibility
 Classical NOT gates are reversible; i.e., two NOT gates in series returns the bit to
  its original state. 
-However, the situation is different for classical logic gates with multiple inputs.
-As an example, consider the NAND Gate shown in Figure 1.2. 
-It is not possible to uniquely determine the input bits from the output bit. 
-Because of this, conventional multi-input logic is @<i>{irreversible}@<fn>{fn-2} .
+ However, the situation is different for classical logic gates with multiple inputs.
+ As an example, consider the NAND Gate shown in Figure 1.2. 
+ It is not possible to uniquely determine the input bits from the output bit. 
+ Because of this, conventional multi-input logic is @<i>{irreversible}@<fn>{fn-2} .
 
 //footnote[fn-2][Note: There are classical multi-input logic gates that are reversible, called "conservative logic" gates To date these have not been widely used, but they have the advantage of making it possible in principle to compute without dissipating power(1)]
 In contrast, quantum gates are @<i>{reversible}. 
-As a result, even though the output overwrites the input, 
+ As a result, even though the output overwrites the input, 
  the input is not lost since the effect of a series of gate operations can be reversed by applying
  the appropriate inverse operations.
 
@@ -132,48 +131,46 @@ As a result, even though the output overwrites the input,
 The fact that we can only calculate the probability of measurement results-not the precise 
  results-on qubits in superposition states allows for a phenomenon that has no classical analog:
  @<i>{entanglement}. 
-If two qubits are entangled, 
+ If two qubits are entangled, 
  then the states are correlated even though the outcome of a measurement on either of the qubits
  can only be predicted by its probability. 
-For example, if two qubits are entangled, 
+ For example, if two qubits are entangled, 
  then a measurement on one of the qubits will give a result with probability determined
  by its superposition state, just as would happen with an isolated qubit. 
-However, once the state of one of the qubits has been collapsed by a measurement, 
+ However, once the state of one of the qubits has been collapsed by a measurement, 
  the entanglement means that we know exactly what we will get if we measure the second qubit.
 //image[fig_1_2][NAND circuit diagram.][scale=0.5]{
 //}
-It is a bit like flipping two coins at the same time, and having them always come up the same, ie.,
+ It is a bit like flipping two coins at the same time, and having them always come up the same, ie.,
  both heads or both tails. 
-Or alternatively, having them always come up opposite-one heads and the other tails. 
-Prior to making a measurement, the states of both of the qubits have not yet been determined. 
-However, when the state of one is collapsed by a measurement, 
+ Or alternatively, having them always come up opposite-one heads and the other tails. 
+ Prior to making a measurement, the states of both of the qubits have not yet been determined. 
+ However, when the state of one is collapsed by a measurement, 
  the second qubit somehow instantaneously "knows" the result. 
-This is true regardless of how far apart the qubits are. 
-For example, suppose we entangle two qubits, send one to New York and the other to Tokyo, 
+ This is true regardless of how far apart the qubits are. 
+ For example, suppose we entangle two qubits, send one to New York and the other to Tokyo, 
  then make prior arrangements to measure both at the same time. 
-We will discover that the results of the measurements will be correlated even though 
+ We will discover that the results of the measurements will be correlated even though 
  there was not enough time for a signal traveling the speed of light to travel between the qubits. 
-Einstein called this "spooky action at a distance."
+ Einstein called this "spooky action at a distance."
 
 If it were possible to control the result of the first measurement, 
  then it would appear that we could communicate faster than the speed of light-violating
  the principle of special relativity. 
-However, the fact that we cannot control the result of the first measurement means 
+ However, the fact that we cannot control the result of the first measurement means 
  that we cannot actually send any information using this mechanism@<fn>{fn-3}. 
-
+ So we can rest comfortably knowing that relativity has not been violated.
 //footnote[fn-3][Entanglement can be used to increase the capacity of a communication channel, however, using a protocol known as super-dense coding.]
-
-So we can rest comfortably knowing that relativity has not been violated.
 
 We will see that the phenomena of @<i>{superposition} and  @<i>{entanglement} give quantum computing 
  its unusual and powerful capabilities.
 
 == Single-Qubit States
 Since there are two components in a qubit's state, 
- we can represent the state as a two-dimensional vector, referred to as a state vector. 
-The basis states can be written
+ we can represent the state as a two-dimensional vector, referred to as a @<i>{state vector}. 
+ The basis states can be written
 #@# //indepimage[eq_1_4]
-The basis states can be written as
+ The basis states can be written as
 //texequation{
 \ket{0} =
 \begin{bmatrix}
@@ -188,7 +185,7 @@ The basis states can be written as
 \end{bmatrix}
 \tag{1.4}
 //}
-It follows that a general superposition state can be written as a weighted sum of the basis states:
+ It follows that a general superposition state can be written as a weighted sum of the basis states:
 //texequation{
 \ket{\psi}
 =
