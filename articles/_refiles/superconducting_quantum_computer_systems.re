@@ -645,7 +645,7 @@ RL
 \end{aligned}
 \tag{4.57}
 //}
- Note that since @<m>{|Γ| ≤ 1}, the minus sign ensures that the return loss is always positive.
+ Note that since @<m>{|\Gamma| ≤ 1}, the minus sign ensures that the return loss is always positive.
  There is a common temptation to want to make the “loss” negative 
  (i.e., to say, “the return loss is -10 dB”), but this would result in a double negative; 
  a negative loss would be the same as gain!
@@ -653,3 +653,84 @@ RL
 In practice, it is commonly assumed that the match is acceptable if at least 90% of the
  incident power is absorbed by the load. 
  This corresponds to a return loss of 10 dB.
+
+=== Standing Wave Ratio (SWR)
+Another common way of quantifying the degree of mismatch between a load and a line is the standing wave ratio. 
+ Since the incident and reflected waves are traveling in opposite directions, 
+ they go in and out of phase with each other as you move along the line. 
+ Consequently, at some points they add constructively to give a total voltage higher than that of the incident wave, 
+ and at other points they add destructively to give a total voltage lower than that of the incident wave. 
+ The ratio of the largest value of the voltage magnitude to that of the smallest value 
+ is called the voltage standing wave ratio, or VSWR. 
+ (You sometimes hear people try to pronounce this acronym, 
+ resulting in something that sounds like, “viz-wahr.”) 
+ It turns out that the magnitude of the current fluctuates in a similar manner, 
+ and if you take the ratio of the maximum to minimum values 
+ you will get the identical numerical result for a lossless line. 
+ Consequently it is not really necessary to add the qualifier, “voltage,” 
+ and it is also common to simply call this ratio the standing wave ratio, 
+ or SWR (not usually pronounced!). 
+ The SWR can be obtained from the reflection coefficient as follows:
+//texequation{
+\begin{aligned}
+VSWR = SWR 
+&= \frac{|V|_{\max}}{|V|_{\min}} \\
+&= \frac{|V_0^+| + |V_0^-|}{|V_0^+| - |V_0^-|} \\
+&= \frac{1 + |V_0^-|/|V_0^+|}{1 - |V_0^-|/|V_0^+|} \\
+&= \frac{1 + |\Gamma|}{1 - |\Gamma|}
+\end{aligned}
+\tag{4.58}
+//}
+ If the line is perfectly matched, @<m>{|\Gamma| = 0}, and the SWR is 1 (or 1:1). 
+ On the other hand, if all of the power is reflected, @<m>{|\Gamma| = 1} and the SWR→ ∞. 
+ As mentioned previously, a match is usually considered acceptable if 90% of the power is delivered to the load,
+ and this occurs when the Return Loss is 10 dB. 
+ This situation corresponds to an SWR of about 2 (or 2:1).
+
+It is also convenient to express the magnitude of the reflection coefficient in terms of the SWR:
+//texequation{
+\begin{aligned}
+|\Gamma| = \frac{SWR - 1}{SWR + 1}
+\end{aligned}
+\tag{4.59}
+//}
+ It is instructive to consider the shape of the voltage waveform along the line in a bit more detail. 
+ Referring to the coordinate systems shown in Figure 4.3, the voltage at a
+ distance @<m>{l} to the left of the load is obtained by setting @<m>{z = -l} in Eq. (4.49). 
+ Expressed in terms of the reflection coefficient, we obtain
+//texequation{
+\begin{aligned}
+V(-l) 
+&= V_0^+ \left[ e^{j\beta l} + \Gamma e^{-j\beta l} \right] \\
+&= V_0^+ e^{j\beta l} \left[ 1 + \Gamma e^{-j2\beta l} \right]
+\end{aligned}
+\tag{4.60}
+//}
+ Next, let us explicitly show the magnitude and phase of the reflection coefficient,
+ @<m>{\Gamma = |\Gamma| e^{j\theta}}. 
+ Substituting this into Eq. (4.60) and taking the magnitude of the entire expression gives
+//texequation{
+\begin{aligned}
+|V(-l)| = |V_0^+| \left| 1 + |\Gamma| e^{j(\theta - 2\beta l)} \right|
+\end{aligned}
+\tag{4.61}
+//}
+ An example of the voltage magnitude described by this equation is shown in Figure 4.4.
+ Although the wave patterns for the incident and reflected waves move to the right and left, 
+ respectively, the pattern for the total voltage magnitude is stationary. 
+ This voltage pattern is called the standing wave pattern or envelope.
+
+=== Impedance as a Function of Position
+Although the current pattern has peaks and valleys just like the voltage pattern, 
+ the peaks and valleys do not occur at the same locations. 
+ As a result, the ratio of voltage to current varies continuously along the line. 
+ If the line were cut at some point a distance @<m>{l} from the load as shown in Figure 4.5, 
+ the input impedance seen looking into the line 
+ at that point would be the ratio of the voltage to current at that distance from the load:
+
+//image[fig_4_4][Voltage standing wave pattern along a transmission line with a mismatched load.][scale=0.8]{
+//}
+//image[fig_4_5][Impedance looking into a terminated transmission line of length l.][scale=0.8]{
+//}
+
+
