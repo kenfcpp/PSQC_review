@@ -230,7 +230,7 @@ where the † superscript indicates the transpose complex conjugate,
  For example,
 #@# //indepimage[eq_1_7]
 //texequation{
-\braket{\psi}{\psi}
+\braket{\psi|\psi}
 =
 \begin{bmatrix}
 \alpha^\ast & \beta^\ast
@@ -444,8 +444,8 @@ This expression says that we start with the ground state, then apply a Hadamard 
 //image[fig_1_3][Circuit representation of Eq. (1.31). In a quantum circuit diagram, the operation goes from left to right, while the matrix expression is shown going from right to left. The final box is a measurement in the standard basis, resulting in a classical bit.][scale=0.5]{
 //}
  we begin with the ground state on the left, then apply a Hadamard gate, a Pauli-@<m>{Y} gate, and a Pauli-@<m>{X}.
-@<br>{}
-　Finally, after performing a quantum calculation, we generally measure each qubit.
+
+Finally, after performing a quantum calculation, we generally measure each qubit.
  The symbol for a measurement is shown as the last element in Figure 1.3. 
  This action collapses the final state onto one of the basis states. 
  The outcome of a measurement is a classical bit that is stored in a classical register. 

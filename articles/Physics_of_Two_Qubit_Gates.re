@@ -282,7 +282,7 @@ c_{01}(0) \\
 c_{10}(0)
 \end{bmatrix} \tag{3.20}
 //}
- Making use of the fact that the states @<m>{|\psi_{00}\rangle} and @<m>{|\psi_{11}\rangle} do not change with time, 
+ Making use of the fact that the states @<m>{|\psi_{00\}\rangle} and @<m>{|\psi_{11\}\rangle} do not change with time, 
  the evolution of the entire 2-qubit system can be written as the @<m>{4 \times 4} matrix [12]:
 //texequation{
 \begin{bmatrix}
@@ -384,7 +384,7 @@ e^{-i\mathcal{H}t/\hbar} = (-iXZ)^\beta = e^{-i\pi\beta/2}(XZ)^\beta \tag{3.30}
 //}
  This is significant, since @<m>{(XZ)^\beta} along with the one-qubit unitaries comprises 
  a universal gate set for quantum computing [14].
- In particular, for @<m>{\beta = 1/2}, we have (@<m>{XZ\})^{1/2} to within a global phase factor, 
+ In particular, for @<m>{\beta = 1/2}, we have @<m>{(XZ)^{1/2\}} to within a global phase factor, 
  and this unitary can be used to generate a CNOT [14, 16]:
 //texequation{
 \text{CNOT} = (IZ)^{-1/2} (XZ)^{1/2} (XI)^{-1/2} \tag{3.31}
@@ -492,13 +492,13 @@ We are now ready to resume our discussion of the density matrix as a representat
 Ifwe know the density matrices of each of the two qubits, 
  they can be combined using the tensor product to produce a combined density matrix. 
  In the following equations, we use @<m>{\rho_A} to denote the density matrix of qubit @<m>{A}, 
- and we use @<m>{\rho_{AB}} to denote the density matrix of the two-qubit state involving qubits @<m>{A} and @<m>{B}.
+ and we use @<m>{\rho_{AB\}} to denote the density matrix of the two-qubit state involving qubits @<m>{A} and @<m>{B}.
 //texequation{
 \rho^{AB} = \rho^A \otimes \rho^B
 \tag{3.43}
 //}
  As an example, suppose qubit A is @<m>{|1\rangle} and qubit B is @<m>{|+\rangle}. 
- We can find the density matrix @<m>{\rho_{AB}} in two ways:
+ We can find the density matrix @<m>{\rho_{AB\}} in two ways:
 //texequation{
 \begin{aligned}
 \rho^{AB} = |1+\rangle \langle 1+| \\
@@ -551,14 +551,12 @@ Now let’s consider one of the Bell states: @<m>{|\Psi^+\rangle} = @<m>{\frac{1
 \rho^{AB}
 &= \left( \frac{|01\rangle + |10\rangle}{\sqrt{2}} \right)
    \left( \frac{\langle 01| + \langle 10|}{\sqrt{2}} \right) \\
-
 &= \frac{
 |01\rangle\langle01|
 + |01\rangle\langle10|
 + |10\rangle\langle01|
 + |10\rangle\langle10|
 }{2} \\
-
 &= \frac{1}{2}
 \begin{bmatrix}
 0 & 0 & 0 & 0 \\
@@ -569,7 +567,7 @@ Now let’s consider one of the Bell states: @<m>{|\Psi^+\rangle} = @<m>{\frac{1
 \end{aligned}
 \tag{3.46}
 //}
- This is also a pure state, because Tr((@<m>{\rho_{AB}})2) = 1. 
+ This is also a pure state, because Tr((@<m>{\rho_{AB\}})2) = 1. 
  But it is not a product state—it cannot be decomposed into a tensor product of two state vectors 
  or a tensor product of two density matrices.
 
@@ -582,7 +580,7 @@ However, the advantage of the density matrix representation is that we can compu
 \rho^{A} = \mathrm{Tr}_B(\rho^{AB})
 \tag{3.47}
 //}
- For our purposes, we will assume that the density matrix @<m>{\rho_{AB}} is built using the standard
+ For our purposes, we will assume that the density matrix @<m>{\rho_{AB\}} is built using the standard
  basis states (@<m>{|0\rangle} and @<m>{|1\rangle}) for both qubits @<m>{A} and @<m>{B}. Then the density matrix can be decomposed as
 //texequation{
 \rho^{AB}
@@ -615,21 +613,18 @@ c_{11,00} & c_{11,01} & c_{11,10} & c_{11,11}
 //texequation{
 \begin{aligned}
 \rho^{A} = \mathrm{Tr}_B(\rho^{AB}) \\
-
 &= \sum_{i,j,k,l}
 c_{ik,jl}
 \,
 |i\rangle \langle j|
 \,
 \mathrm{Tr}(|k\rangle \langle l|) \\
-
 &= \sum_{i,j,k,l}
 c_{ik,jl}
 \,
 |i\rangle \langle j|
 \,
 \langle l | k \rangle \\
-
 &= \sum_{i,j,k}
 c_{ik,jk}
 \,
@@ -641,7 +636,7 @@ c_{ik,jk}
  Since the states @<m>{|k\rangle} and @<m>{|l\rangle} in this equation are basis states, they are orthogonal, 
  meaning that @<m>{\langle l | k \rangle} = 1 if @<m>{k = l}, and zero otherwise, leading to (3.52).
 
- Therefore, element @<m>{a_{ij}} of @<m>{\rho^A} is given by:
+ Therefore, element @<m>{a_{ij\}} of @<m>{\rho^A} is given by:
 //texequation{
 a_{i,j} = \sum_k c_{ik,jk}
 \tag{3.53}
@@ -662,23 +657,19 @@ c_{00,10} + c_{01,11} & c_{10,10} + c_{11,11}
 //texequation{
 \begin{aligned}
 \rho^{B} = \mathrm{Tr}_A(\rho^{AB}) \\
-
 &= \sum_{i,j,k,l}
 c_{ik,jl}
 \,
 \mathrm{Tr}(|i\rangle \langle j|)
 \, |k\rangle \langle l| \\
-
 &= \sum_{i,j,k,l}
 c_{ik,jl}
 \,
 \langle j | i \rangle
 \, |k\rangle \langle l| \\
-
 &= \sum_{i,k,l}
 c_{ik,il}
 \, |k\rangle \langle l| \\
-
 &=
 \begin{bmatrix}
 c_{00,00} + c_{10,10} & c_{01,00} + c_{11,10} \\
