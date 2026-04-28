@@ -732,5 +732,346 @@ Although the current pattern has peaks and valleys just like the voltage pattern
 //}
 //image[fig_4_5][Impedance looking into a terminated transmission line of length l.][scale=0.8]{
 //}
+//texequation{
+\begin{aligned}
+Z_{\mathrm{in}} 
+&= \frac{V(-l)}{I(-l)} \\
+&= \frac{V_0^+ \left[ e^{j\beta l} + \Gamma e^{-j\beta l} \right]}
+{\frac{V_0^+}{Z_c} \left[ e^{j\beta l} - \Gamma e^{-j\beta l} \right]} \\
+&= Z_c
+\frac{e^{j\beta l} + \Gamma e^{-j\beta l}}
+{e^{j\beta l} - \Gamma e^{-j\beta l}}
+\end{aligned}
+\tag{4.62}
+//}
+ This can be expressed entirely in terms of the impedances using Eq. (4.53). 
+ Making the substitution for Γ and simplifying gives
+//texequation{
+\begin{aligned}
+Z_{\mathrm{in}} 
+&= Z_c
+\frac{(Z_L + Z_c)e^{j\beta l} + (Z_L - Z_c)e^{-j\beta l}}
+{(Z_L + Z_c)e^{j\beta l} - (Z_L - Z_c)e^{-j\beta l}} \\
+&= Z_c
+\frac{
+Z_L (e^{j\beta l} + e^{-j\beta l})
++ Z_c (e^{j\beta l} - e^{-j\beta l})
+}{
+Z_L (e^{j\beta l} - e^{-j\beta l})
++ Z_c (e^{j\beta l} + e^{-j\beta l})
+} \\
+&= Z_c
+\frac{
+Z_L \cos \beta l + j Z_c \sin \beta l
+}{
+j Z_L \sin \beta l + Z_c \cos \beta l
+} \\
+&= Z_c
+\frac{
+Z_L + j Z_c \tan \beta l
+}{
+Z_c + j Z_L \tan \beta l
+}
+\end{aligned}
+\tag{4.63}
+//}
 
+Since the tangent is periodic in 𝜋 rather than 2𝜋, the impedance is periodic
+ in distances of half a wavelength rather than a wavelength.
 
+Three limiting cases give some insight into the behavior of the impedance function (4.63).
+ In the case of a short circuit, @<m>{Z_L = 0} and the input impedance becomes
+//texequation{
+\begin{aligned}
+Z_{\mathrm{sc}} = j Z_c \tan \beta l
+\end{aligned}
+\tag{4.64}
+//}
+However, if the line is open circuited so that @<m>{Z_L \to \infty}, the input impedance becomes
+//texequation{
+\begin{aligned}
+Z_{\mathrm{oc}} = -j Z_c \cot \beta l
+\end{aligned}
+\tag{4.65}
+//}
+It is interesting to note the relationship
+//texequation{
+\begin{aligned}
+Z_{\mathrm{sc}} Z_{\mathrm{oc}} = Z_c^2
+\end{aligned}
+\tag{4.66}
+//}
+ This suggests an experimental technique for measuring the characteristic impedance of a transmission line!
+
+If the line is electrically short, 𝛽𝑙 ≪ 1, the tangent can be approximated by its argument
+ and the cotangent by the inverse of its argument. 
+ Comparing with the circuit equations @<m>{X_L = 𝑗𝜔𝐿} and @<m>{X_C = −𝑗∕𝜔𝐶}, 
+ we see that an electrically short length of short-circuited transmission line acts like an inductor 
+ whose inductance is proportional to length, 
+ and a short length of open-circuited transmission line acts like a capacitor 
+ whose capacitance is proportional to length.
+
+Finally, if the line is terminated in the characteristic impedance of the line, i.e.,
+ @<m>{Z_L = Z_c}, then the input impedance is simply equal to the characteristic impedance regardless
+ of the length of the transmission line.
+
+=== Quarter Wave Transformer
+From the previous discussions, we see that it is generally desirable for a transmission
+ line to be terminated in a matched impedance; i.e., 
+ a real impedance equal to the characteristic impedance of the line. Under these conditions, 
+ the reflection coefficient will be zero, indicating that all of the incident power is absorbed by the load. 
+ Further, the input impedance of the line will simply be equal to the characteristic impedance
+ regardless of the length.
+
+The quarter wave transformer is a common and effective technique used for impedance matching.
+ Consider the transmission line circuit terminated in a real impedance @<m>{R_L} illustrated in Figure 4.6.
+
+For a quarter wavelength section of transmission line, the argument to the tangent functions 
+ in Eq. (4.63) is @<m>{\beta l = (2\pi/\lambda)(\lambda/4) = \pi/2}. 
+ Since the tangent increases without bounds as the argument approaches @<m>{\pi/2}, 
+ the tangent terms dominate the numerator and denominator of the expression for the input impedance (4.63), 
+ and we find
+//image[fig_4_6][A real impedance can be matched to a lossless transmission line using a quarter wavelength line whose impedance is the geometric mean of the load and line to be matched. This is referred to as a quarter wave matching transformer.][scale=0.8]{
+//}
+//texequation{
+\begin{equation*}
+\lim_{\beta l \to \pi/2} Z_{\mathrm{in}}
+=
+\frac{Z_1^2}{R_L}.
+\tag{4.67}
+\end{equation*}
+//}
+ If we want to eliminate reflections (i.e., Γ = 0), then we want @<m>{Z_{\mathrm{in\}\} = Z_c}.
+ Imposing this condition on Eq. (4.67) leads to
+//texequation{
+\begin{equation*}
+Z_c
+=
+\frac{Z_1^2}{R_L}.
+\tag{4.68}
+\end{equation*}
+//}
+ Consequently we see that we can match any real load @<m>{R_L} to a line with impedance @<m>{Z_c} provided 
+ we use a quarter-wavelength segment of transmission line whose characteristic
+ impedance is the geometric mean of @<m>{R_L} and @<m>{Z_c}:
+//texequation{
+\begin{equation*}
+Z_1
+=
+\sqrt{Z_c R_L}.
+\tag{4.69}
+\end{equation*}
+//}
+ It is important to keep in mind, however, that this match will only be perfect at the
+ single frequency where @<m>{l = \lambda/4}. 
+ At other frequencies there will be some reflections from the load. 
+ The bandwidth over which the SWR is 2:1 or less depends on the degree of mismatch 
+ between the load and the line to be matched. 
+ For example, if a 122 Ω line is used to match a 300 Ω load to a 50 Ω line, 
+ the impedance bandwidth for an SWR < 2:1 is about ±20%. 
+ It is also important to keep in mind that this technique only works for real load impedances. 
+ However, any load impedance can be transformed into a real impedance at a given frequency 
+ by adding the appropriate lumped capacitance or inductance in series or parallel with the load. 
+ Further, since short segments of transmission line can be made to look like either inductors or capacitors, 
+ any load impedance can be transformed to a purely real impedance by putting another appropriate segment
+ of transmission line in series or parallel with the load.
+
+=== Coaxial, Microstrip, and Coplanar Lines
+Although the ladder line is conceptually convenient since the geometry resembles its lumped-circuit model,
+ it is mainly used as a low-loss feed line for high-frequency (i.e., below 30 MHz) antennas. 
+ It is not of interest for superconducting quantum computing systems owing to the lack of shielding 
+ and incompatibility with nanofabrication methods. 
+ Instead, coaxial lines (or coax for short) are used to convey signals between component blocks, 
+ and coplanar transmission lines are typically used to convey signals on quantum computing chips. 
+ The simpler microstrip lines are used in some components of interest for superconducting computer 
+ control and readout systems.
+
+The detailed analysis of the fields and modes of these transmission lines are beyond the scope of our present
+ discussion, but expressions for the characteristic impedance @<m>{Z_𝑐}
+ and effective relative permittivity @<m>{\epsilon_e} are summarized below. 
+ In all cases, thewavelength along the line is given by where @<m>{\lambda_0} is the wavelength in free space.
+//texequation{
+\begin{equation*}
+\lambda
+=
+\frac{\lambda_0}{\sqrt{\epsilon_e}}.
+\tag{4.70}
+\end{equation*}
+//}
+//image[fig_4_7][Some commonly-used types of transmission lines. Since there are multiple ways to drive the coplanar guide, the most common source connection is explicitly shown. All of the dielectric materials are assumed to be nonmagnetic for our purposes.][scale=0.8]{
+//}
+
+==== Coaxial Lines
+The field structure and parameters for coaxial transmission lines are discussed in
+ most introductory texts on electromagnetics, e.g., [19]. 
+ Referring to Figure 4.7(a), the characteristic impedance is
+//texequation{
+\begin{equation*}
+Z_c
+=
+\frac{1}{2\pi}
+\sqrt{\frac{\mu_0}{\epsilon_0 \epsilon_r}}
+\ln(b/a).
+\tag{4.71}
+\end{equation*}
+//}
+ In this case 𝜖𝑒 = 𝜖𝑟 since the coax is uniformly filled with dielectric.
+
+==== Microstrip Lines
+RF and microwave components such as filters, power dividers, and quadrature hybrids
+ are often made using metallized substrates with transmission line patterns etched
+ on one side using a process similar to that used to make printed circuit boards.
+ Figure 4.7(b) describes the geometry and key dimensions. 
+ Unlike coax, simple and accurate analytical expressions are not available, 
+ and instead expressions are obtained by fitting approximate analytical expressions 
+ to the results of numerical modeling. 
+ In the common case of RF and microwave components described above, 
+ the conductor thickness @<m>{t} is much less than either the conductor width @<m>{w} 
+ or the substrate thickness @<m>{h} and can be neglected. 
+ Under this assumption, models for the key parameters have been discussed 
+ by a number of authors [20–24]. 
+ Here we quote the expressions for characteristic impedance given by Pozar [21]:
+//texequation{
+\begin{equation*}
+Z_c
+=
+\begin{cases}
+\displaystyle
+\frac{60}{\sqrt{\epsilon_e}}
+\ln\left(
+\frac{8h}{w}
++
+\frac{w}{4h}
+\right)
+& \text{for } w/h \leq 1
+\\[12pt]
+\displaystyle
+\frac{120\pi}
+{\sqrt{\epsilon_e}
+\left[
+w/h + 1.393 + 0.667\ln(w/h + 1.444)
+\right]}
+& \text{for } w/h \geq 1
+\end{cases}\
+\end{equation*}
+\tag{4.72}
+//}
+ and the effective relative dielectric constant is approximated by
+//texequation{
+\begin{equation*}
+\epsilon_e
+=
+\frac{\epsilon_r + 1}{2}
++
+\frac{\epsilon_r - 1}{2}
+\frac{1}{\sqrt{1 + 12h/w}}.
+\tag{4.73}
+\end{equation*}
+//}
+
+==== Coplanar Waveguide
+Microstrip lines require metallization on both sides of the circuit substrate. 
+ A geometry that is more compatible with nanofabrication techniques is the coplanar waveguide
+ (CPW) shown in Figure 4.7(c). 
+ For example, the bottom dielectric could be a silicon substrate, 
+ and the top dielectric could be an oxide layer grown on the silicon. 
+ The planar metallization pattern could then be formed using conventional photolithographic techniques 
+ (similar to those used to make printed circuit boards). 
+ In such a case the substrate thickness is so much larger than the oxide thickness 
+ and the lateral dimensions of the transmission line that it can be considered infinite. 
+ Consequently only the thickness of the top dielectric layer 
+ (oxide in our silicon example) affects the transmission line properties.
+
+We have shown the usual excitation connections for this transmission line, 
+ since three conductors permit excitation to be applied in multiple ways.
+
+When the conductor thickness @<m>{t} can be neglected,
+ analytical expressions for the characteristic impedance can be obtained using a mathematical technique 
+ called conformal mapping [25-27]. 
+ The result is
+//texequation{
+\begin{equation*}
+Z_c
+=
+4 \epsilon_0 \epsilon_e
+\frac{K(k_0)}{K(k_0')}.
+\tag{4.74}
+\end{equation*}
+//}
+ Here @<m>{K} is the complete elliptic integral of the first kind, and its arguments are defined as 
+//texequation{
+\begin{equation*}
+k_0
+=
+\frac{w}{w+2s},
+\qquad
+k_0'
+=
+\sqrt{1-k_0^2}.
+\tag{4.75}
+\end{equation*}
+//}
+ The effective relative permittivity is
+//texequation{
+\begin{equation*}
+\epsilon_e
+=
+1
++
+\frac{1}{2}(\epsilon_{r1}-1)
++
+q(\epsilon_{r2}-\epsilon_{r1}).
+\tag{4.76}
+\end{equation*}
+//}
+ where
+//texequation{
+\begin{equation*}
+q
+=
+\frac{1}{2}
+\frac{K(k)\,K(k_0')}
+{K(k')\,K(k_0)}.
+\tag{4.77}
+\end{equation*}
+//}
+ and
+//texequation{
+\begin{equation*}
+k
+=
+\frac{
+\sinh\left(\frac{\pi w}{4h}\right)
+}{
+\sinh\left(\frac{\pi (w+2s)}{4h}\right)
+},
+\qquad
+k'
+=
+\sqrt{1-k^2}.
+\tag{4.78}
+\end{equation*}
+//}
+
+As an example, [26] analyzed a coplanar waveguide with @<m>{w} = 10 𝜇m, 
+ @<m>{s} = 6.6 𝜇m,@<m>{h} = 550 nm, and @<m>{t} = 200 nm. 
+ The line was fabricated on a high-resistivity silicon wafer with thickness 500 𝜇. 
+ The substrate thickness is clearly much larger than the other transmission line dimensions, 
+ justifying the assumption of infinite thickness. 
+ In contrast, the conductor thickness in this case is not negligible, 
+ and the authors found that for their geometry, 
+ available analytic expressions such as Eq. (4.76) for the effective 
+ relative permittivity were inaccurate. 
+ For such geometries, the effective permittivity must be calculated numerically 
+ using tools such as the finite element method.
+
+The impedance expression (4.74) is based on the magnetic contributions to the inductance per unit length, i.e.,
+ the conventional inductance resulting from magnetic flux linking the current. 
+ However, in Chapter 7, we will see that in superconducting currents there is a kinetic contribution 
+ to the inductance associated with the inertia of charge carriers as well. 
+ This kinetic contribution to the inductance of superconducting coplanar waveguides has been considered 
+ by [26, 28], and is negligible when the temperature is significantly below the superconducting transition 
+ temperature, as is the case in quantum computing. 
+ Consequently, this kinetic contribution can be neglected in our cases of interest.
+
+== @<m>{S} Parameters
