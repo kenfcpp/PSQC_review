@@ -1075,3 +1075,418 @@ The impedance expression (4.74) is based on the magnetic contributions to the in
  Consequently, this kinetic contribution can be neglected in our cases of interest.
 
 == @<m>{S} Parameters
+Because voltages and currents vary with position,
+ it is often more convenient to characterize devices and circuits in a language that is more consistent 
+ with the notions of incident, reflected, and transmitted waves. 
+ Consider the two-port circuit shown in Figure 4.8. 
+ The incoming wave voltage amplitudes are denoted by a “+” superscript,
+ and the outgoingwave voltage amplitudes are denoted by a “−” superscript. 
+ For a linear circuit, the incoming and outgoing waves are related by
+//texequation{
+\begin{equation}
+\begin{bmatrix}
+V_1^{-} \\
+V_2^{-}
+\end{bmatrix}
+=
+\begin{bmatrix}
+S_{11} & S_{12} \\
+S_{21} & S_{22}
+\end{bmatrix}
+\begin{bmatrix}
+V_1^{+} \\
+V_2^{+}
+\end{bmatrix},
+\tag{4.79}
+\end{equation}
+//}
+ or
+//texequation{
+\begin{equation}
+V^{-} = SV^{+}
+\tag{4.80}
+\end{equation}
+//}
+ The elements of the 𝑆 matrix are called 𝑆 parameters and are defined as follows:
+//texequation{
+\begin{equation}
+\begin{aligned}
+S_{11} &= \left. \frac{V_1^{-}}{V_1^{+}} \right|_{V_2^{+}=0}
+= \text{reflection coefficient from port 1 } (\Gamma_1), \\
+S_{21} &= \left. \frac{V_2^{-}}{V_1^{+}} \right|_{V_2^{+}=0}
+= \text{transmission coefficient from port 1 to port 2}, \\
+S_{12} &= \left. \frac{V_1^{-}}{V_2^{+}} \right|_{V_1^{+}=0}
+= \text{transmission coefficient from port 2 to port 1}, \\
+S_{22} &= \left. \frac{V_2^{-}}{V_2^{+}} \right|_{V_1^{+}=0}
+= \text{reflection coefficient from port 2 } (\Gamma_2).
+\end{aligned}
+\tag{4.81}
+\end{equation}
+//}
+//image[fig_4_8][Incoming and outgoing wave amplitudes used in the definitions of S parameters.][scale=0.8]{
+//}
+
+=== Lossless Condition
+For a lossless network, all the power that goes in must come out.
+ For example, assuming all ports have the characteristic impedance @<m>{Z_{𝑐'\}}, we require
+//texequation{
+\begin{equation}
+\frac{|V_1^{+}|^2}{2Z_c}
++
+\frac{|V_2^{+}|^2}{2Z_c}
+-
+\frac{|V_1^{-}|^2}{2Z_c}
+-
+\frac{|V_2^{-}|^2}{2Z_c}
+= 0.
+\tag{4.82}
+\end{equation}
+//}
+ Equivalently, this can be expressed
+//texequation{
+\begin{equation}
+(V^{+})^{\dagger}V^{+}
+-
+(V^{-})^{\dagger}V^{-}
+= 0,
+\tag{4.83}
+\end{equation}
+//}
+where the superscript @<m>{\dagger} represents the transpose complex conjugate.
+ We can use the @<m>{S} matrix to express this entirely in terms of the incident wave voltage amplitudes:
+//texequation{
+\begin{equation}
+\begin{aligned}
+(V^{+})^{\dagger}V^{+}
+-
+(SV^{+})^{\dagger}SV^{+}
+&= 0, \\
+(V^{+})^{\dagger}V^{+}
+-
+(V^{+})^{\dagger}S^{\dagger}SV^{+}
+&= 0, \\
+(V^{+})^{\dagger}(I - S^{\dagger}S)V^{+}
+&= 0.
+\end{aligned}
+\tag{4.84}
+\end{equation}
+//}
+ From this we conclude that
+//texequation{
+\begin{equation}
+S^{\dagger}S = I
+\tag{4.85}
+\end{equation}
+//}
+ and the @<m>{S} matrix of a lossless network must be unitary.
+
+=== Reciprocity
+A microwave network is said to be reciprocal if the transmission from port @<m>{i} to port @<m>{j} is
+ the same as from @<m>{j} to @<m>{i}. In other words, 
+ a reciprocal network will work the same if the input and output are interchanged. 
+ In terms of @<m>{S} parameters we require @<m>{S_{ij\} = S_{ji\}} . 
+ We conclude that the @<m>{S} matrix of a reciprocal network is symmetric.
+
+== Transmission (ABCD) Matrices
+In many cases, microwave networks consist of a cascade of 2-port components.
+ It is therefore useful to define a @<m>{2 \times 2} transmission matrix 
+ that can be used to obtain the voltage at the output port from that of the input port. 
+ Transmission through a cascade of 2-ports can then be obtained by multiplying the transmission matrices. 
+ These matrices are also called ABCD matrices owing to the common symbols used for the matrix elements.
+
+Unlike 𝑆 parameters, the ABCD matrix for a 2-port is defined in terms of the total
+ voltages and currents as defined in Figure 4.9.Note that the sign convention for current
+ is directed in on the input, and out on the output. 
+ This ensures consistent definitions when multiple two-ports are cascaded. 
+ In terms of these quantities, the ABCD matrixis defined as
+//texequation{
+\begin{equation}
+\begin{bmatrix}
+V_1 \\
+I_1
+\end{bmatrix}
+=
+\begin{bmatrix}
+A & B \\
+C & D
+\end{bmatrix}
+\begin{bmatrix}
+V_2 \\
+I_2
+\end{bmatrix}.
+\tag{4.86}
+\end{equation}
+//}
+//image[fig_4_9][Definition of voltages and currents for the ABCD transmission matrix.][scale=0.8]{
+//}
+ From this equation we obtain the definitions of the matrix components as
+//texequation{
+\begin{equation}
+\begin{aligned}
+A \quad &= \left. \frac{V_1}{V_2} \right|{I_2=0}, \\
+B \quad &= \left. \frac{V_1}{I_2} \right|{V_2=0}, \\
+C \quad &= \left. \frac{I_1}{V_2} \right|{I_2=0}, \\
+D \quad &= \left. \frac{I_1}{I_2} \right|{V_2=0}.
+\end{aligned}
+\tag{4.87–4.90}
+\end{equation}
+//}
+ As an example of the construction of an ABCD matrix, 
+ consider the length of lossless transmission line shown in Figure 4.10. 
+ The total voltage and current as functions of position along the line are given by
+//texequation{
+\begin{equation}
+V(z) = V_0^{+}\left(e^{-j\beta z} + \Gamma e^{j\beta z}\right),
+\tag{4.91}
+\end{equation}
+//}
+//texequation{
+\begin{equation}
+I(z) = \frac{V_0^{+}}{Z_c}\left(e^{-j\beta z} - \Gamma e^{j\beta z}\right),
+\tag{4.92}
+\end{equation}
+//}
+ where @<m>{\Gamma} is the reflection coefficient at port 2, 
+ and @<m>{V_0^{+\}} is the amplitude of the wave incident wave from the left.
+
+The voltages and currents at the ports are given by
+//texequation{
+\begin{equation}
+V_1 = V(-l) = V_0^{+}\left(e^{j\beta l} + \Gamma e^{-j\beta l}\right),
+\tag{4.93}
+\end{equation}
+//}
+//texequation{
+\begin{equation}
+I_1 = I(-l) = \frac{V_0^{+}}{Z_c}\left(e^{j\beta l} - \Gamma e^{-j\beta l}\right),
+\tag{4.94}
+\end{equation}
+//}
+//texequation{
+\begin{equation}
+V_2 = V(0) = V_0^{+}(1 + \Gamma),
+\tag{4.95}
+\end{equation}
+//}
+//texequation{
+\begin{equation}
+I_2 = I(0) = \frac{V_0^{+}}{Z_c}(1 - \Gamma).
+\tag{4.96}
+\end{equation}
+//}
+//image[fig_4_10][Definitions for constructing the ABCD matrix of a section of transmission line.][scale=0.8]{
+//}
+ Referring to Eqs. (4.87) and (4.89), we see that @<m>{A} and @<m>{C} are calculated with @<m>{I_2 = 0}. 
+ This implies an open circuit at port 2, for which @<m>{\Gamma = +1} from Eq. (4.96). 
+ This gives
+//texequation{
+\begin{equation}
+\begin{aligned}
+A
+&= \left. \frac{V_1}{V_2} \right|_{I_2=0} \
+&= \frac{e^{j\beta l} + e^{-j\beta l}}{2} \
+&= \cos \beta l,
+\end{aligned}
+\tag{4.97}
+\end{equation}
+//}
+ and
+//texequation{
+\begin{equation}
+\begin{aligned}
+C
+&= \left. \frac{I_1}{V_2} \right|_{I_2=0} \
+&= \frac{e^{j\beta l} - e^{-j\beta l}}{2Z_c} \\
+&= j\frac{1}{Z_c}\sin \beta l \
+&= jY_c \sin \beta l.
+\end{aligned}
+\tag{4.98}
+\end{equation}
+//}
+ Similarly, the definitions of @<m>{B} and @<m>{D} from Eqs. (4.88) and (4.90) require @<m>{V_2 = 0},
+ implying a short circuit at port 2, and @<m>{\Gamma = -1} from Eq. (4.95). It follows that
+//texequation{
+\begin{equation}
+\begin{aligned}
+B
+&= \left. \frac{V_1}{I_2} \right|_{V_2=0} \
+&= \frac{e^{j\beta l} - e^{-j\beta l}}{2/Z_c} \\
+&= jZ_c \sin \beta l,
+\end{aligned}
+\tag{4.99}
+\end{equation}
+//}
+ and
+//texequation{
+\begin{equation}
+\begin{aligned}
+D
+&= \left. \frac{I_1}{I_2} \right|_{V_2=0} \
+&= \frac{e^{j\beta l} + e^{-j\beta l}}{2} \\
+&= \cos \beta l.
+\end{aligned}
+\tag{4.100}
+\end{equation}
+//}
+ The ABCD matrix for the section of transmission line is therefore
+//texequation{
+\begin{equation}
+\begin{bmatrix}
+A & B \\
+C & D
+=
+\end{bmatrix}
+\begin{bmatrix}
+\cos \beta l & jZ_c \sin \beta l \\
+jY_c \sin \beta l & \cos \beta l
+\end{bmatrix}.
+\tag{4.101}
+\end{equation}
+//}
+ The ABCD matrices for several useful 2-ports are given in Table 4.1.
+//imgtable[tblimg_4_1][Useful ABCD matrices.][scale=0.8]{
+//}
+
+As mentioned above, the input voltages and currents of a series of cascaded two-ports
+ are obtained by simply multiplying the ABCD matrices of the two-ports. 
+ For example, the voltage and current at the input to two cascaded two-ports can be obtained in terms
+ of the voltage and current at the output as follows:
+//texequation{
+\begin{equation}
+\begin{bmatrix}
+V_1 \\
+I_1
+\end{bmatrix}
+=
+\begin{bmatrix}
+A_1 & B_1 \\
+C_1 & D_1
+\end{bmatrix}
+\begin{bmatrix}
+A_2 & B_2 \\
+C_2 & D_2
+\end{bmatrix}
+\begin{bmatrix}
+V_3 \\
+I_3
+\end{bmatrix}.
+\tag{4.102}
+\end{equation}
+//}
+
+Although ABCD matrices are convenient for analyzing cascaded networks,
+ ultimately one is often interested in the @<m>{S} parameters of the equivalent 2-port. 
+ As an example, consider @<m>{S_{11\}} for the general case of a terminated transmission line of
+ impedance @<m>{Z_1} connected to port 1, and a terminated transmission line of impedance
+ @<m>{Z_2} connected to port 2 [29]. 
+ The voltage at port 2 will be related to the current as @<m>{I_2 = V_2/Z_2}:
+//texequation{
+\begin{equation}
+\begin{aligned}
+\begin{bmatrix}
+V_1 \\
+I_1
+\end{bmatrix}
+&=
+\begin{bmatrix}
+A & B \\
+C & D
+\end{bmatrix}
+\begin{bmatrix}
+1 \\
+1/Z_2
+\end{bmatrix}
+V_2 \
+&=
+\begin{bmatrix}
+A + B/Z_2 \\
+C + D/Z_2
+\end{bmatrix}
+V_2.
+\end{aligned}
+\tag{4.103}
+\end{equation}
+//}
+ The impedance @<m>{Z_{in1\}} looking into port 1 is then
+//texequation{
+\begin{equation}
+Z_{\mathrm{in1}}
+=
+\frac{V_1}{I_1}
+=
+\frac{A + B/Z_2}{C + D/Z_2}.
+\tag{4.104}
+\end{equation}
+//}
+ Since @<m>{S_{11\}} is equal to the reflection coefficient @<m>{\Gamma}, we have
+//texequation{
+\begin{equation}
+S_{11}
+=
+\Gamma
+=
+\frac{Z_{\mathrm{in1}} - Z_1}{Z_{\mathrm{in1}} + Z_1}.
+\tag{4.105}
+\end{equation}
+//}
+ Substituting (4.104) into (4.105) and simplifying gives
+//texequation{
+\begin{equation}
+S_{11}
+=
+\frac{
+A + B/Z_2 - CZ_1 - DZ_1/Z_2
+}{
+A + B/Z_2 + CZ_1 + DZ_1/Z_2
+}.
+\tag{4.106}
+\end{equation}
+//}
+
+To obtain @<m>{S_{21\}}, we now return to the top equation in (4.103):
+//texequation{
+\begin{equation}
+V_1
+=
+(1 + S_{11})V_1^{+}
+=
+(A + B/Z_2)V_2.
+\tag{4.107}
+\end{equation}
+//}
+ Solving for @<m>{V_2/V_1^+} , substituting in for @<m>{S_{11\}}, and simplifying gives
+//texequation{
+\begin{equation}
+S_{21}
+=
+\frac{
+2
+}{
+A + B/Z_2 + CZ_1 + DZ_1/Z_2
+}.
+\tag{4.108}
+\end{equation}
+//}
+ To obtain @<m>{S_{22\}}, we first invert the ABCD matrix to obtain
+//texequation{
+\begin{equation}
+\begin{bmatrix}
+V_2 \\
+I_2
+\end{bmatrix}
+=
+\frac{1}{AD - BC}
+\begin{bmatrix}
+D & -B \\
+-C & A
+\end{bmatrix}
+\begin{bmatrix}
+V_1 \\
+I_1
+\end{bmatrix}.
+\tag{4.109}
+\end{equation}
+//}
+ However, referring to Figure 4.9, @<m>{I_1} is pointing into the network and @<m>{I_2} is pointing out
+ of the network. 
+ To consider @<m>{S_{22\}} we need to reverse these directions, so we introduce
