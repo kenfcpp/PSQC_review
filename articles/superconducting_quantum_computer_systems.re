@@ -1489,4 +1489,248 @@ I_1
 //}
  However, referring to Figure 4.9, @<m>{I_1} is pointing into the network and @<m>{I_2} is pointing out
  of the network. 
- To consider @<m>{S_{22\}} we need to reverse these directions, so we introduce
+ To consider @<m>{S_{22\}} we need to reverse these directions, so we introduce 
+ @<m>{I'_1 = -I_1} and @<m>{I'_2 = -I_2}, with @<m>{Z_{in2\} = V_2/I'_2} and @<m>{Z_1 = V_1/I'_1}. 
+ The inverted ABCD matrix equation then becomes
+//texequation{
+\begin{equation}
+\begin{aligned}
+\begin{bmatrix}
+V_2 \\
+-I_2'
+\end{bmatrix}
+=
+\frac{1}{AD - BC}
+\begin{bmatrix}
+D & -B \\
+-C & A
+\end{bmatrix}
+\begin{bmatrix}
+1 \\
+-1/Z_1
+\end{bmatrix}
+V_1 \
+=
+\frac{1}{AD - BC}
+\begin{bmatrix}
+D + B/Z_1 \\
+-C - A/Z_1
+\end{bmatrix}
+V_1 .
+\end{aligned}
+\tag{4.110}
+\end{equation}
+//}
+ The impedance @<m>{Z_{\mathrm{in2\}\}} looking into port 2 is then
+//texequation{
+\begin{equation}
+Z_{\mathrm{in2}} \
+=
+\frac{V_2}{I_2'}
+=
+\frac{D + B/Z_1}{C + A/Z_1}.
+\tag{4.111}
+\end{equation}
+//}
+ Similar to before, @<m>{S_{22\}} is given by
+//texequation{
+\begin{equation}
+\begin{aligned}
+S_{22}
+=
+\frac{Z_{\mathrm{in2}} - Z_2}{Z_{\mathrm{in2}} + Z_2} \
+=
+\frac{
+D + B/Z_1 - CZ_2 - AZ_2/Z_1
+}{
+D + B/Z_1 + CZ_2 + AZ_2/Z_1
+}.
+\end{aligned}
+\tag{4.112}
+\end{equation}
+//}
+
+Finally, to obtain @<m>{S_{12\}}, we return to the top equation in (4.110):
+//texequation{
+\begin{equation}
+V_2^{+}(1 + S_{22})
+=
+\frac{D + B/Z_1}{AD - BC}V_1 .
+\tag{4.113}
+\end{equation}
+//}
+ Solving for @<m>{V_1/V_2^+} , substituting for @<m>{S_{22\}}, and simplifying leads to
+//texequation{
+\begin{equation}
+S_{12}
+=
+\frac{
+2(AD - BC)(Z_1/Z_2)
+}{
+A + B/Z_2 + CZ_1 + DZ_1/Z_2
+}.
+\tag{4.114}
+\end{equation}
+//}
+
+In the most common case of @<m>{Z_1 = Z_2 \equiv Z_c}, the equations relating @<m>{S} parameters to
+ the ABCD matrix reduce to the following:
+//texequation{
+\begin{equation}
+S_{11}
+=
+\frac{
+A + B/Z_c - CZ_c - D
+}{
+A + B/Z_c + CZ_c + D
+},
+\tag{4.115}
+\end{equation}
+//}
+//texequation{
+\begin{equation}
+S_{22}
+=
+\frac{
+-A + B/Z_c - CZ_c + D
+}{
+A + B/Z_c + CZ_c + D
+},
+\tag{4.116}
+\end{equation}
+//}
+ and for reciprocal networks,
+//texequation{
+\begin{equation}
+S_{12}
+=
+S_{21}
+=
+\frac{
+2
+}{
+A + B/Z_c + CZ_c + D
+}.
+\tag{4.117}
+\end{equation}
+//}
+ In obtaining this expression, we see that we must require @<m>{AD - BC = 1} for reciprocal
+networks with the same impedance at each port.
+
+== Attenuators
+Attenuators are reciprocal components that are used to reduce the amplitude of a signal on a transmission line.
+ Ideally, we would like to do this without creating reflections along the line. 
+ This means, of course, that we want both ports to be matched to the characteristic impedance of the line. 
+ It follows from reciprocity that the attenuator has the same behavior regardless of which port is used 
+ as the input and which is used as the output.
+//image[fig_4_11][Circuit for an attenuator.][scale=0.8]{
+//}
+
+One way to realize such a component is with a symmetric lumped-element circuit as shown in Figure 4.11.
+ The equivalent ABCD matrix for this circuit can be obtained by multiplying three matrices: 
+ the first for a series impedance of @<m>{R_1}, the second for a shunt impedance of @<m>{R_2}, 
+ and the third for another series impedance of @<m>{R_1}. 
+ Referring to Table 4.1 we have:
+//texequation{
+\begin{equation}
+\begin{bmatrix}
+1 & R_1 \\
+0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 \\
+1/R_2 & 1
+\end{bmatrix}
+\begin{bmatrix}
+1 & R_1 \\
+0 & 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 + R_1/R_2 &
+R_1(1 + +R_1/R_2) \\
+1/R_2 &
+1 + R_1/R_2
+\end{bmatrix}.
+\tag{4.118}
+\end{equation}
+//}
+ First, let us consider the conditions that provide matched ports. 
+ In terms of @<m>{S} parameters, this implies @<m>{S_{11\} = S_{22\} = 0}. 
+ From Eq. (4.115), this implies @<m>{A + B/Z_c = C/Z_c + D}, or @<m>{B/Z_c = C/Z_c} since @<m>{A = D} (see Eq. (4.118)).
+ We have then,
+//texequation{
+\begin{equation}
+\begin{aligned}
+\frac{1}{Z_c}
+\left(
+R_1 + \frac{R_1^2}{R_2}
+\right)
+=
+\frac{Z_c}{R_2}, \\
+\frac{R_2}{Z_c}
+\left(
+\frac{R_1}{R_2} + \frac{R_1^2}{R_2^2}
+\right)
+=
+\frac{Z_c}{R_2}.
+\end{aligned}
+\tag{4.119}
+\end{equation}
+//}
+ or
+//texequation{
+\begin{equation}
+R_2
+=
+\frac{Z_c}{\sqrt{r + r^2}},
+\tag{4.120}
+\end{equation}
+//}
+ where @<m>{r = R_1/R_2}.
+
+Next we want to choose the resistor ratio @<m>{r = R_1/R_2} so that the desired attenuation is obtained.
+ If @<m>{G} is the desired power gain, then we want to require @<m>{S_{12\} = S_{21\} = \sqrt{G\}}.
+ Since @<m>{A = D} and @<m>{B/Z_c = C/Z_c}, @<m>{S_{12\}} from Eq. (4.117) can be written
+//texequation{
+\begin{equation}
+\begin{aligned}
+S_{12}
+=
+\frac{2}{2(A + CZ_c)} \\
+=
+\frac{2}{2(1 + r + Z_c/R_2)} \\
+=
+\frac{1}{1 + r + \sqrt{r + r^2}} .
+\end{aligned}
+\tag{4.121}
+\end{equation}
+//}
+ With@<m>{\sqrt{G\} = S_{12\}}, this can be written
+//texequation{
+\begin{equation}
+\sqrt{r + r^2}
+=
+\frac{1}{\sqrt{G}}
+-1 - r.
+\tag{4.122}
+\end{equation}
+//}
+ Squaring both sides and solving for @<m>{r} gives
+//texequation{
+\begin{equation}
+r
+=
+\frac{\sqrt{G}}{2}
+\left(
+\frac{1}{\sqrt{G}} - 1
+\right)^2 .
+\tag{4.123}
+\end{equation}
+//}
+
+To summarize, we first choose @<m>{G} for the desired attenuation, 
+ and calculate therequired resistor ratio @<m>{r} from Eq. (4.123). 
+ Once @<m>{r} is known, @<m>{R_2} is given by Eq. (4.120), and @<m>{R_1 = rR_2}.
+
+== Circulators and Isolators
