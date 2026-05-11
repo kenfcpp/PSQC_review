@@ -1728,3 +1728,181 @@ r
 \tag{4.123}
 \end{equation}
 //}
+
+To summarize, we first choose @<m>{G} for the desired attenuation, 
+ and calculate therequired resistor ratio @<m>{r} from Eq. (4.123). 
+ Once @<m>{r} is known, @<m>{R_2} is given by Eq. (4.120), and @<m>{R_1 = rR_2}.
+
+== Circulators and Isolators
+To explore the implications of reciprocity a bit more, consider a 3-port, lossless network:
+//texequation{
+\begin{equation}
+\begin{bmatrix}
+S_{11} & S_{12} & S_{13} \\
+S_{21} & S_{22} & S_{23} \\
+S_{31} & S_{32} & S_{33}
+\end{bmatrix}.
+\tag{4.124}
+\end{equation}
+//}
+ If all ports are matched, @<m>{S_{11\} = S_{22\} = S_{33\} = 0}. 
+ Requiring the @<m>{S} matrix to be unitary leads to
+//texequation{
+\begin{equation}
+\begin{aligned}
+\begin{bmatrix}
+0 & S_{21}^{*} & S_{31}^{*} \\
+S_{12}^{*} & 0 & S_{32}^{*} \\
+S_{13}^{*} & S_{23}^{*} & 0
+\end{bmatrix}
+\begin{bmatrix}
+0 & S_{12} & S_{13} \\
+S_{21} & 0 & S_{23} \\
+S_{31} & S_{32} & 0
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix} \\
+\begin{bmatrix}
+|S_{21}|^2 + |S_{31}|^2 &
+S_{31}^{*}S_{32} &
+S_{21}^{*}S_{23} \\
+S_{32}^{*}S_{31} &
+|S_{12}|^2 + |S_{32}|^2 &
+S_{12}^{*}S_{13} \\
+S_{23}^{*}S_{21} &
+S_{13}^{}S_{12} &
+|S_{13}|^2 + |S_{23}|^2
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}.
+\end{aligned}
+\tag{4.125}
+\end{equation}
+//}
+
+This represents nine simultaneous nonlinear equations, six of which are independent.
+ To find a solution, let us assume for the moment that @<m>{S_{21\} \neq 0}. 
+ From the equation on the lower left, it immediately follows that @<m>{S_{23\} = 0}. 
+ But in this case, the equation on the lower right requires @<m>{|S_{13\}| = 1}. 
+ This in turn requires @<m>{S_{12\} = 0} from the bottom center equation, leading to @<m>{|S_{32\}| = 1} from the center equation. 
+ The center left equation then gives @<m>{S_{31\} = 0}. 
+ Finally, the top left equation then requires @<m>{|S_{21\}| = 1}. 
+ We conclude that the form of the @<m>{S} matrix is
+//texequation{
+\begin{equation}
+\begin{bmatrix}
+0 & 0 & S_{13} \\
+S_{21} & 0 & 0 \\
+0 & S_{32} & 0
+\end{bmatrix}.
+\tag{4.126}
+\end{equation}
+//}
+
+Note that this equation is not symmetric and so is nonreciprocal; the signal can flow
+ from ports 1 → 2, 2 → 3, and 3 → 1, but not in the reverse direction. 
+ This device is called a circulator.We conclude that any matched, lossless 3-port circuit must be nonreciprocal.
+ But any circuit made entirely of reciprocal components such as inductors,
+ capacitors, and resistors must be reciprocal, so we conclude that no reciprocal 3-port
+ circuit can be perfectly matched.
+
+It turns out that it is possible to realize a nonreciprocal circuit, 
+ but it requires something more than inductors, capacitors, and resistors. 
+ In particular, passive nonreciprocal devices can be realized by including magnetized material in the device. 
+ The detailed analysis of the electrodynamics of nonreciprocal devices is beyond the scope of this discussion, 
+ but we can get some understanding from the behavior of two-state quantum systems discussed in Chapter 2. 
+ Generally speaking, the laws of physics have time-reversal symmetry, i.e., 
+ the equations remain valid with the substitution @<m>{t → -t}.
+
+We know from Chapter 2 that a spin in a magnetic field precesses in a direction determined
+ by the direction of the applied magnetic field. 
+ Since the magnetic moment of a material generally arises from some combination of electron orbital 
+ and spin angular momentum, it turns out that when placed in a magnetic field, 
+ the magnetization also precesses with a preferred sense.
+
+Now in a reciprocal network, interchanging the input and the output is equivalent
+ to making the substitution @<m>{t → -t}. 
+ However, if magnetic materials are present, simply interchanging the input 
+ and output will not reverse the sense of precession; to obtain true time reversal would 
+ also require reversing the direction of the magnetic field. 
+ So if the direction of the magnetic field remains the same, 
+ the circuit will in general have different behavior if the input and output are interchanged. 
+ This is the fundamental origin of nonreciprocal behavior in passive devices. 
+ The most common implementation of nonreciprocal devices uses insulating magnetic materials called ferrites.
+ For more information about the operation of nonreciprocal ferrite devices, see [21,30].
+
+Commonly used symbols for circulators are shown in Figure 4.12. 
+ In these symbols, the connections can be viewed as signal lines, with an implied ground comprising
+ the second conductor of the transmission lines. 
+ In actual devices, the ports are oriented at 120◦ intervals, as shown on the symbol on the left. 
+ However, in drawing circuits, it is often convenient to draw the ports at 90◦ intervals as shown in the center symbol.
+
+It is interesting to consider how the operation of the device depends on the 
+ impedance terminating the ports in the circuit. 
+ For example, consider that port 2 is terminated in a matched load. 
+ In this case, power that enters port 1 will be transferred to the load at port 2, and no reflections will occur. 
+ In this case port 3 sees no signal at all.
+ But what if the load at port 2 is not perfectly matched? In this case there will be some reflected power, 
+ which will appear as an input signal to port 2. 
+ The power entering port 2 will be conveyed to port 3, and if port 3 is connected to a perfectly matched load as
+ shown in the right symbol in Figure 4.12, the reflected power will be dissipated in the
+ load on port 3 and none of the reflected power will return to the original source at port 1. 
+ Devices like this that isolate the source from the load are referred to as isolators. 
+ They play an important role in preventing noise from reaching a qubit, 
+ while still allowing the weak signal from the qubit to be measured.
+//image[fig_4_12][Circulator Circuit diagrams. In actual devices, the three ports are symmetrically placed at 120◦ angles, as represented on the left. However, in drawing circuit diagrams, it is often convenient to show the ports at right angles, as shown in the center. As shown on the right, you can make an isolator by connecting one of the ports to a matched load.][scale=0.8]{
+//}
+
+== Power Dividers/Combiners
+If we need to connect the same signal to two different high-impedance inputs at low frequencies,
+ we would simply wire them together directly. 
+ However, at RF frequencies where transmission line effects must be considered, we need a component called a
+ splitter or divider to connect a signal to two different loads. 
+ The reason is that each connection  represents a transmission line, and if the two loads were placed in parallel, 
+ the impedance seen by the input line would be 1/2 its characteristic impedance, 
+ resulting in reflections to previous parts of the circuit.
+
+The particular type of divider depicted in Figure 4.13 is known as a Wilkinson divider.
+ The input line splits into two @<m>{\lambda/4} lines with characteristic impedance@<m>{\sqrt{2\}Z_c}, where @<m>{Z_c}
+ is the characteristic impedance of the lines external to the components. 
+ From (4.68), the input to each branch of the @<m>{\lambda/4} lines would be @<m>{(\sqrt{2\}Z_c)^2/Z_c = 2Z_c}. 
+ Consequently, when the two branches are placed in parallel, the effective impedance will be @<m>{Z_c}, 
+ and the input line will be matched.
+
+Since the output voltages in the two branches are symmetric, there is no potential difference across the resistor,
+ and the resistor has no effect on the circuit. 
+ Consequently, in theory a Wilkinson divider can be lossless (in practice there will always be some loss
+ owing to the finite conductivity of the conductors, dielectric losses, etc.).
+
+In contrast, when the circuit is used as a combiner for signals that are not identical,
+ then there will be a potential difference across the resistor and some of the power will be dissipated.@<fn>{fn-3}  
+ However, the value of the resistor can be chosen so that ports 2 and 3 are matched 
+ (the proper value for the resistor turns out to be @<m>{2Z_c}). 
+ Consequently although all ports are matched, the circuit is not lossless when used as a combiner. 
+ (We saw in the previous section that a lossless 3-port device with all ports matched must be a
+ circulator instead of a divider/combiner.) 
+ A detailed analysis of the Wilkinson divider can be found in [21].
+//footnote[fn-3][If the amplitudes and phases of the signals to be combined were precisely time-reversed versions of the output signals when used as a splitter, then by reciprocity the device would be lossless. However, in general, arbitrary signals to be combined result in some loss in the resistor.]
+
+It is also possible to realize a divider with a 4-port network.
+ Figure 4.14 shows a type of 4-port where the ports are connected with quarter-wave branches of transmission
+ line with the impedances shown. 
+ This is a type of branch coupler called a quadrature hybrid. 
+ As we will see, this coupler divides power applied to port 1 equally between ports 2 and 3, with port 4 isolated 
+ (i.e., there is no coupling between port 1 and port 4).
+ In addition, the signals at the output ports 2 and 3 are 90 degrees out of phase—a useful
+ feature enabling sine and cosine signals to be generated from a single local oscillator.
+//image[fig_4_13][Wilkinson power divider.][scale=0.8]{
+//}
+//image[fig_4_14][Quadrature hybrid 4-port network. For clarity each transmission line is represented by a single line, with the return conductors understood (e.g., an implied ground plane) (24).][scale=0.8]{
+//}
+//image[fig_4_15][Even and odd mode analysis of a quadrature hybrid coupler. All impedances are shown normalized to Zc (24).][scale=0.8]{
+//}
